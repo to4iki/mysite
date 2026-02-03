@@ -1,0 +1,18 @@
+---
+type Props = {
+  date: Date;
+};
+
+const { date } = Astro.props;
+
+const formatDate = (d: Date): string => {
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
+---
+
+<time datetime={date.toISOString()}>
+  {date.toISOString().split("T")[0]}
+</time>

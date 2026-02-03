@@ -1,0 +1,48 @@
+---
+import BiographySection from "../../components/BiographySection.astro";
+import PageHeaderText from "../../components/PageHeaderText.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title={`Biography | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+  <main class="max-w-prose mx-auto px-6 pb-12 max-md:px-4 max-md:pb-8">
+    <PageHeaderText>BIOGRAPHY</PageHeaderText>
+    <section class="flex items-center gap-6 mb-12 max-md:flex-col max-md:items-center max-md:text-center">
+      <img
+        src="/biography.webp"
+        alt="to4iki"
+        class="w-32 h-32 rounded-2xl object-cover shrink-0 max-md:w-28 max-md:h-28"
+      />
+      <div>
+        <h2 class="text-4xl font-bold mb-2 max-md:text-3xl">Toshiki Takezawa (@to4iki)</h2>
+        <p class="text-xl text-muted mb-1 max-md:text-lg">working at Mirrativ, Inc.</p>
+      </div>
+    </section>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <BiographySection
+        title="SNS"
+        items={[
+          { icon: "🐧", label: "X", url: "https://twitter.com/to4iki" },
+          { icon: "🐙", label: "Github", url: "https://github.com/to4iki" },
+          { icon: "🗣️", label: "SpeakerDeck", url: "https://speakerdeck.com/to4iki" },
+          { icon: "🧳", label: "Wantedly", url: "https://www.wantedly.com/id/to4iki" },
+        ]}
+      />
+      <BiographySection
+        title="NOTE"
+        items={[
+          { icon: "✏️", label: "note", url: "https://note.com/tto4iki" },
+          { icon: "✏️", label: "Zenn", url: "https://zenn.dev/to4iki" },
+        ]}
+      />
+      <BiographySection
+        title="BOOK"
+        items={[
+          { icon: "📚", label: "WEB+DB PRESS Vol.104", url: "https://www.amazon.co.jp/dp/4774196886" },
+          { icon: "📚", label: "AbemaTV iOS Tech Book", url: "https://techbookfest.org/product/261920001" },
+        ]}
+      />
+    </div>
+  </main>
+</BaseLayout>

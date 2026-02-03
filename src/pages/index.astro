@@ -1,0 +1,16 @@
+---
+import PageHeaderText from "../components/PageHeaderText.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
+  <main class="max-w-prose mx-auto px-6 pb-12 max-md:px-4 max-md:pb-8">
+    <PageHeaderText>to4iki.com</PageHeaderText>
+    <div class="mb-10 text-center">
+      <p class="text-2xl font-medium md:text-3xl">
+        Welcome to my personal site.🏡
+      </p>
+    </div>
+  </main>
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import PageHeaderText from "../../components/PageHeaderText.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const blogPosts = await getCollection("blog", (post) => {
+  if (import.meta.env.PROD) {
+    return post.data.draft !== true;
+  } else {
+    return true;
+  }
+});
+const posts = blogPosts.sort((a, b) => {
+  return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+});
+---
+
+<BaseLayout title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+  <main class="max-w-prose mx-auto px-6 pb-12 max-md:px-4 max-md:pb-8">
+    <PageHeaderText>BLOG</PageHeaderText>
+    <ul class="list-none m-0 p-0">
+      {
+        posts.map((post) => (
+          <li class="py-4 border-b">
+            <a
+              href={`/blog/${post.id}/`}
+              class="flex items-baseline gap-6 no-underline max-md:flex-col max-md:gap-1 hover:text-primary"
+            >
+              <span class="text-lg font-bold shrink-0 min-w-32 tabular-nums max-md:min-w-0">
+                <FormattedDate date={post.data.pubDate} />
+              </span>
+              <span class="text-xl font-semibold max-md:text-lg">{post.data.title}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+</BaseLayout>

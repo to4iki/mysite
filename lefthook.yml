@@ -1,0 +1,18 @@
+pre-commit:
+  parallel: true
+  commands:
+    # https://biomejs.dev/ja/recipes/git-hooks/#lefthook
+    biome:
+      glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,astro}"
+      run: bun run biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      stage_fixed: true
+      skip:
+        - merge
+        - rebase
+    prettier:
+      glob: "*.{md,mdx,yaml,yml,toml}"
+      run: bunx prettier --write {staged_files}
+      stage_fixed: true
+      skip:
+        - merge
+        - rebase

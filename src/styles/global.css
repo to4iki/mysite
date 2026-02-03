@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: system-ui, sans-serif;
+  --max-width-prose: 720px;
+  --color-foreground: #113340;
+  --color-background: #ffffff;
+  --color-primary: #007a9e;
+}
+
+@layer base {
+  :root {
+    color: var(--color-foreground);
+    background-color: var(--color-background);
+  }
+
+  body {
+    @apply font-sans bg-white leading-relaxed;
+  }
+
+  a {
+    @apply no-underline transition-colors duration-200 hover:text-primary;
+  }
+}
