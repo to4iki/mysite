@@ -4,12 +4,13 @@ import FormattedDate from "../components/FormattedDate.astro";
 import BaseLayout from "./BaseLayout.astro";
 import "../styles/remark-link-card.css";
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<"blog">["data"] & { slug: string };
 
-const { title, description, pubDate, updatedDate } = Astro.props;
+const { title, description, pubDate, updatedDate, slug } = Astro.props;
+const ogpImagePath = `/blog/${slug}/ogp.png`;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} image={ogpImagePath}>
   <main class="w-[calc(100%-2em)] max-w-full m-0">
     <article
       class:list={[

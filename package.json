@@ -17,6 +17,7 @@
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.17.1",
     "remark-link-card-plus": "^0.7.3",
+    "satori": "^0.19.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.18"
   },
