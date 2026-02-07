@@ -11,29 +11,22 @@ const ogpImagePath = `/blog/${slug}/ogp.png`;
 ---
 
 <BaseLayout title={title} description={description} image={ogpImagePath}>
-  <main class="w-[calc(100%-2em)] max-w-full m-0">
-    <article
-      class:list={[
-        "prose prose-sm max-w-prose mx-auto p-4 mb-[200px]",
-        "md:prose-base"
-      ]}
-    >
-      <div>
-        <div class="mb-2 py-2 leading-none">
-          <div class="mb-4 text-l font-bold">
-            <FormattedDate date={pubDate} />
-            {
-              updatedDate && (
-                <span class="text-muted text-base font-normal italic ml-2">
-                  (updated: <FormattedDate date={updatedDate} />)
-                </span>
-              )
-            }
-          </div>
-          <h1 class="m-0 mb-2 text-3xl font-bold max-md:text-2xl">{title}</h1>
+  <article class="prose prose-sm py-4 md:prose-base">
+    <div>
+      <div class="mb-2 py-2 leading-none">
+        <div class="mb-4 text-l font-bold">
+          <FormattedDate date={pubDate} />
+          {
+            updatedDate && (
+              <span class="text-muted text-base font-normal italic ml-2">
+                (updated: <FormattedDate date={updatedDate} />)
+              </span>
+            )
+          }
         </div>
-        <slot />
+        <h1 class="m-0 mb-2 text-3xl font-bold max-md:text-2xl">{title}</h1>
       </div>
-    </article>
-  </main>
+      <slot />
+    </div>
+  </article>
 </BaseLayout>
