@@ -14,5 +14,5 @@ const formatDate = (d: Date): string => {
 ---
 
 <time datetime={date.toISOString()}>
-  {date.toISOString().split("T")[0]}
+  {formatDate(date)}
 </time>
