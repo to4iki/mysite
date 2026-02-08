@@ -1,11 +1,48 @@
 ---
 import HeaderLink from "./HeaderLink.astro";
+import HamburgerIcon from "./icons/HamburgerIcon.astro";
 ---
 
 <header class="max-w-prose mx-auto mb-6 px-6 py-3 max-md:px-4">
-  <nav class="flex items-center justify-end gap-6">
-    <HeaderLink href="/">TOP</HeaderLink>
-    <HeaderLink href="/blog">BLOG</HeaderLink>
-    <HeaderLink href="/biography">BIOGRAPHY</HeaderLink>
+  <nav>
+    <div class="flex items-center justify-end">
+      <button
+        id="hamburger-menu"
+        type="button"
+        class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 cursor-pointer"
+      >
+        <HamburgerIcon />
+      </button>
+
+      <div class="hidden md:flex items-center gap-6">
+        <HeaderLink href="/">TOP</HeaderLink>
+        <HeaderLink href="/blog">BLOG</HeaderLink>
+        <HeaderLink href="/biography">BIOGRAPHY</HeaderLink>
+      </div>
+    </div>
+
+    <div id="mobile-nav" class="hidden md:hidden flex-col gap-4 pt-4 pb-4 border-b border-border">
+      <HeaderLink href="/">TOP</HeaderLink>
+      <HeaderLink href="/blog">BLOG</HeaderLink>
+      <HeaderLink href="/biography">BIOGRAPHY</HeaderLink>
+    </div>
   </nav>
 </header>
+
+<script>
+  const hamburgerMenu = document.getElementById("hamburger-menu");
+
+  hamburgerMenu?.addEventListener("click", () => {
+    const nav = document.getElementById("mobile-nav");
+    if (!nav) return;
+
+    const isHidden = nav.classList.contains("hidden");
+    if (isHidden) {
+      nav.classList.remove("hidden");
+      nav.classList.add("flex");
+    } else {
+      nav.classList.add("hidden");
+      nav.classList.remove("flex");
+    }
+  });
+</script>
