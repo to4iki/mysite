@@ -145,3 +145,22 @@ http://example.com
 ## 画像
 
 これは ![バナナ](https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Bananavarieties.jpg/220px-Bananavarieties.jpg) 画像です。
+
+## アラート
+
+これはアラートです。
+
+> [!NOTE]
+> これはノートです。補足情報を記載します。
+
+> [!TIP]
+> これはヒントです。役に立つアドバイスを記載します。
+
+> [!IMPORTANT]
+> これは重要な情報です。
+
+> [!WARNING]
+> これは警告です。注意が必要な情報を記載します。
+
+> [!CAUTION]
+> これは注意喚起です。危険性のある情報を記載します。
