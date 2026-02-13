@@ -30,7 +30,3 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 ## Moduler Rules
 
 - `code-style.md` - コードスタイル
-
-## Skills
-
-- `/commit` - git commit
