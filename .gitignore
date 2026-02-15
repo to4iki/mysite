@@ -16,6 +16,3 @@ pnpm-debug.log*
 
 # IDE
 # .vscode/
-
-# devbox
-.devbox/

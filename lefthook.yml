@@ -10,7 +10,7 @@ pre-commit:
         - merge
         - rebase
     prettier:
-      glob: "*.{md,mdx,yaml,yml,toml}"
+      glob: "*.{md,mdx,yaml,yml}"
       run: bunx prettier --write {staged_files}
       stage_fixed: true
       skip:

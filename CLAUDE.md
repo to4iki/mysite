@@ -1,11 +1,19 @@
-# CLAUDE.md
+# CLAUDE.md - AI開発ガイド
 
 個人サイトのフロントエンド。
 JavaScriptランタイムとツールキットには Bun、デプロイ先には Cloudflare Workers を利用する。
 
 ## 開発環境
 
-プロジェクトの開発環境の構築には、Devbox を使う。
+プロジェクトの開発環境の構築には、mise を使う。
+
+## セットアップ
+
+```bash
+mise install
+bun install
+lefthook install
+```
 
 ## 技術スタック
 
