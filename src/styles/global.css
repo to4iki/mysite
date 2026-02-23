@@ -11,8 +11,7 @@
 
 @layer base {
   :root {
-    color: var(--color-foreground);
-    background-color: var(--color-background);
+    @apply text-foreground bg-background;
   }
 
   body {
@@ -21,5 +20,15 @@
 
   a {
     @apply no-underline transition-colors duration-200 hover:text-primary;
+  }
+}
+
+@layer components {
+  .prose .footnotes {
+    @apply border-t border-foreground/30 mt-8;
+  }
+
+  .prose .footnotes > :first-child {
+    @apply hidden;
   }
 }
