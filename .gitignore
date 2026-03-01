@@ -14,5 +14,8 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# Lighthouse CI
+.lighthouseci/
+
 # IDE
 # .vscode/
