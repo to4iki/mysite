@@ -14,15 +14,15 @@
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
     "@tailwindcss/typography": "^0.5.19",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.17.1",
+    "@tailwindcss/vite": "^4.2.1",
+    "astro": "^5.18.0",
     "remark-github-blockquote-alert": "^2.0.1",
     "remark-link-card-plus": "^0.7.3",
-    "satori": "^0.19.1",
+    "satori": "^0.19.2",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.1.18"
+    "tailwindcss": "^4.2.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.14"
+    "@biomejs/biome": "^2.4.4"
   }
 }
