@@ -9,6 +9,9 @@ import HamburgerIcon from "./icons/HamburgerIcon.astro";
       <button
         id="hamburger-menu"
         type="button"
+        aria-label="メニューを開く"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
         class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 cursor-pointer"
       >
         <HamburgerIcon />
@@ -40,9 +43,13 @@ import HamburgerIcon from "./icons/HamburgerIcon.astro";
     if (isHidden) {
       nav.classList.remove("hidden");
       nav.classList.add("flex");
+      hamburgerMenu.setAttribute("aria-expanded", "true");
+      hamburgerMenu.setAttribute("aria-label", "メニューを閉じる");
     } else {
       nav.classList.add("hidden");
       nav.classList.remove("flex");
+      hamburgerMenu.setAttribute("aria-expanded", "false");
+      hamburgerMenu.setAttribute("aria-label", "メニューを開く");
     }
   });
 </script>
