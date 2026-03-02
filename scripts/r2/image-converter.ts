@@ -1,7 +1,6 @@
 import { readdir, readFile, stat } from "node:fs/promises";
 import { extname, join, relative } from "node:path";
 import sharp from "sharp";
-import { R2_PREFIX } from "./constants.ts";
 import type { ConvertedImage, ImageEntry, UploadOptions } from "./types.ts";
 
 const SUPPORTED_EXTENSIONS = new Set([
@@ -23,7 +22,7 @@ async function collectEntries(dir: string): Promise<ImageEntry[]> {
       entries.push(...(await collectEntries(fullPath)));
     } else if (SUPPORTED_EXTENSIONS.has(extname(item.name).toLowerCase())) {
       const rel = relative(MEDIA_DIR, fullPath);
-      const r2Key = `${R2_PREFIX}/${rel.replace(extname(rel), ".avif")}`;
+      const r2Key = rel.replace(extname(rel), ".avif");
       entries.push({ relativePath: rel, r2Key, srcPath: fullPath });
     }
   }

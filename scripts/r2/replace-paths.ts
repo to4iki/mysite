@@ -1,23 +1,39 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
-import { extname, join } from "node:path";
-import { R2_PREFIX, R2_PUBLIC_URL } from "./constants.ts";
+import { extname, join, relative } from "node:path";
+import { R2_PUBLIC_URL } from "./const.ts";
 
-const BLOG_DIR = join(process.cwd(), "src/content/blog");
+const CONTENT_DIR = join(process.cwd(), "src/content");
 const MEDIA_PATTERN = /!\[([^\]]*)\]\(\/media\/([^)]+)\)/g;
 
 function parseArgs(args: string[]): { dryRun: boolean } {
   return { dryRun: args.includes("--dry-run") };
 }
 
-async function processFile(file: string, dryRun: boolean): Promise<number> {
-  const filePath = join(BLOG_DIR, file);
+async function collectMdFiles(dir: string): Promise<string[]> {
+  const items = await readdir(dir, { withFileTypes: true });
+  const files: string[] = [];
+
+  for (const item of items) {
+    const fullPath = join(dir, item.name);
+    if (item.isDirectory()) {
+      files.push(...(await collectMdFiles(fullPath)));
+    } else if (item.name.endsWith(".md")) {
+      files.push(fullPath);
+    }
+  }
+
+  return files;
+}
+
+async function processFile(filePath: string, dryRun: boolean): Promise<number> {
   const content = await readFile(filePath, "utf-8");
+  const displayPath = relative(CONTENT_DIR, filePath);
   let count = 0;
 
   const replaced = content.replace(MEDIA_PATTERN, (_match, alt, mediaPath) => {
     const avifPath = mediaPath.replace(extname(mediaPath), ".avif");
-    const newUrl = `${R2_PUBLIC_URL}/${R2_PREFIX}/${avifPath}`;
-    console.log(`  ${file}: /media/${mediaPath} -> ${newUrl}`);
+    const newUrl = `${R2_PUBLIC_URL}/${avifPath}`;
+    console.log(`  ${displayPath}: /media/${mediaPath} -> ${newUrl}`);
     count++;
     return `![${alt}](${newUrl})`;
   });
@@ -34,11 +50,10 @@ async function main() {
 
   console.log(`[replace-paths] mode: ${dryRun ? "dry-run" : "replace"}`);
 
-  const files = await readdir(BLOG_DIR);
-  const mdFiles = files.filter((f) => f.endsWith(".md"));
+  const mdFiles = await collectMdFiles(CONTENT_DIR);
 
   const counts = await Promise.all(
-    mdFiles.map((file) => processFile(file, dryRun)),
+    mdFiles.map((filePath) => processFile(filePath, dryRun)),
   );
   const totalReplacements = counts.reduce((sum, n) => sum + n, 0);
 

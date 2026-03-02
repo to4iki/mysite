@@ -1,9 +1,9 @@
 export type ImageEntry = {
-  /** Relative path from media/ (e.g. "slug/hero.jpg") */
+  // Relative path from media/ (e.g. "slug/hero.jpg")
   relativePath: string;
-  /** R2 object key (e.g. "blog/slug/hero.avif") */
+  // R2 object key (e.g. "slug/hero.avif")
   r2Key: string;
-  /** Absolute path to the source file */
+  // Absolute path to the source file
   srcPath: string;
 };
 

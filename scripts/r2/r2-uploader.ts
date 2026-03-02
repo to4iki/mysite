@@ -3,42 +3,22 @@ import {
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
-import { R2_PUBLIC_URL } from "./constants.ts";
+import { R2_PUBLIC_URL } from "./const.ts";
 import type { ConvertedImage, UploadOptions, UploadResult } from "./types.ts";
 
-function createS3Client(): S3Client {
-  const endpoint = process.env.R2_ENDPOINT;
-  const accessKeyId = process.env.R2_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
+const s3Client = new S3Client({
+  region: "auto",
+  endpoint: process.env.R2_ENDPOINT,
+  credentials: {
+    accessKeyId: process.env.R2_ACCESS_KEY_ID ?? "",
+    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY ?? "",
+  },
+});
+const bucket = process.env.R2_BUCKET_NAME ?? "";
 
-  if (!endpoint || !accessKeyId || !secretAccessKey) {
-    throw new Error(
-      "Missing R2 env vars (R2_ENDPOINT, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY)",
-    );
-  }
-
-  return new S3Client({
-    region: "auto",
-    endpoint,
-    credentials: { accessKeyId, secretAccessKey },
-  });
-}
-
-function getBucket(): string {
-  const bucket = process.env.R2_BUCKET_NAME;
-  if (!bucket) {
-    throw new Error("Missing R2_BUCKET_NAME env var");
-  }
-  return bucket;
-}
-
-async function objectExists(
-  client: S3Client,
-  bucket: string,
-  key: string,
-): Promise<boolean> {
+async function objectExists(key: string): Promise<boolean> {
   try {
-    await client.send(new HeadObjectCommand({ Bucket: bucket, Key: key }));
+    await s3Client.send(new HeadObjectCommand({ Bucket: bucket, Key: key }));
     return true;
   } catch {
     return false;
@@ -46,25 +26,23 @@ async function objectExists(
 }
 
 async function uploadOne(
-  client: S3Client | null,
-  bucket: string,
   image: ConvertedImage,
   options: UploadOptions,
 ): Promise<UploadResult> {
   const publicUrl = `${R2_PUBLIC_URL}/${image.r2Key}`;
 
-  if (options.dryRun || !client) {
+  if (options.dryRun) {
     console.log(`  [dry-run] ${image.r2Key} -> ${publicUrl}`);
     return { r2Key: image.r2Key, publicUrl, success: true };
   }
 
   try {
-    if (await objectExists(client, bucket, image.r2Key)) {
+    if (await objectExists(image.r2Key)) {
       console.log(`  [skip] ${image.r2Key} (already exists)`);
       return { r2Key: image.r2Key, publicUrl, success: true };
     }
 
-    await client.send(
+    await s3Client.send(
       new PutObjectCommand({
         Bucket: bucket,
         Key: image.r2Key,
@@ -87,16 +65,11 @@ export async function uploadImages(
   images: ConvertedImage[],
   options: UploadOptions,
 ): Promise<UploadResult[]> {
-  const client = options.dryRun ? null : createS3Client();
-  const bucket = options.dryRun ? "" : getBucket();
-
   if (options.dryRun) {
     console.log("[upload] dry-run mode");
   } else {
     console.log(`[upload] uploading ${images.length} file(s)...`);
   }
 
-  return Promise.all(
-    images.map((image) => uploadOne(client, bucket, image, options)),
-  );
+  return Promise.all(images.map((image) => uploadOne(image, options)));
 }
