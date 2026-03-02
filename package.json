@@ -8,12 +8,15 @@
     "preview": "astro preview",
     "lint": "biome check",
     "format": "biome check --write",
-    "lhci": "lhci autorun"
+    "lhci": "lhci autorun",
+    "r2:upload": "bun run scripts/r2/upload-images.ts",
+    "r2:replace-paths": "bun run scripts/r2/replace-paths.ts"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/rss": "^4.0.15",
     "@astrojs/sitemap": "^3.7.0",
+    "@aws-sdk/client-s3": "^3.1000.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.18.0",
