@@ -7,6 +7,7 @@ dist/
 
 # Env
 .env
+.env.*
 
 # logs
 npm-debug.log*

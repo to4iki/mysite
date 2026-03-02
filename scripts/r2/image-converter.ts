@@ -1,6 +1,7 @@
 import { readdir, readFile, stat } from "node:fs/promises";
 import { extname, join, relative } from "node:path";
 import sharp from "sharp";
+import { R2_PREFIX } from "./constants.ts";
 import type { ConvertedImage, ImageEntry, UploadOptions } from "./types.ts";
 
 const SUPPORTED_EXTENSIONS = new Set([
@@ -11,7 +12,6 @@ const SUPPORTED_EXTENSIONS = new Set([
   ".gif",
 ]);
 const MEDIA_DIR = join(process.cwd(), "media");
-const R2_PREFIX = "blog";
 
 async function collectEntries(dir: string): Promise<ImageEntry[]> {
   const entries: ImageEntry[] = [];
@@ -63,13 +63,14 @@ export async function convertImages(
   }
 
   console.log(`[convert] converting ${entries.length} file(s)...`);
-  const results: ConvertedImage[] = [];
-  for (const entry of entries) {
-    const converted = await convertOne(entry, options.maxWidth);
-    const kb = (converted.sizeBytes / 1024).toFixed(1);
-    console.log(`  ${entry.relativePath} -> ${entry.r2Key} (${kb} KB)`);
-    results.push(converted);
-  }
+  const results = await Promise.all(
+    entries.map(async (entry) => {
+      const converted = await convertOne(entry, options.maxWidth);
+      const kb = (converted.sizeBytes / 1024).toFixed(1);
+      console.log(`  ${entry.relativePath} -> ${entry.r2Key} (${kb} KB)`);
+      return converted;
+    }),
+  );
 
   return results;
 }

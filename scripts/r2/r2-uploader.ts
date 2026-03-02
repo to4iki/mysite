@@ -3,9 +3,8 @@ import {
   PutObjectCommand,
   S3Client,
 } from "@aws-sdk/client-s3";
+import { R2_PUBLIC_URL } from "./constants.ts";
 import type { ConvertedImage, UploadOptions, UploadResult } from "./types.ts";
-
-const R2_PUBLIC_URL = "https://media.to4iki.com";
 
 function createS3Client(): S3Client {
   const endpoint = process.env.R2_ENDPOINT;
@@ -47,14 +46,14 @@ async function objectExists(
 }
 
 async function uploadOne(
-  client: S3Client,
+  client: S3Client | null,
   bucket: string,
   image: ConvertedImage,
   options: UploadOptions,
 ): Promise<UploadResult> {
   const publicUrl = `${R2_PUBLIC_URL}/${image.r2Key}`;
 
-  if (options.dryRun) {
+  if (options.dryRun || !client) {
     console.log(`  [dry-run] ${image.r2Key} -> ${publicUrl}`);
     return { r2Key: image.r2Key, publicUrl, success: true };
   }
@@ -88,23 +87,16 @@ export async function uploadImages(
   images: ConvertedImage[],
   options: UploadOptions,
 ): Promise<UploadResult[]> {
+  const client = options.dryRun ? null : createS3Client();
+  const bucket = options.dryRun ? "" : getBucket();
+
   if (options.dryRun) {
     console.log("[upload] dry-run mode");
-    return images.map((img) => {
-      const publicUrl = `${R2_PUBLIC_URL}/${img.r2Key}`;
-      console.log(`  [dry-run] ${img.r2Key} -> ${publicUrl}`);
-      return { r2Key: img.r2Key, publicUrl, success: true };
-    });
+  } else {
+    console.log(`[upload] uploading ${images.length} file(s)...`);
   }
 
-  const client = createS3Client();
-  const bucket = getBucket();
-
-  console.log(`[upload] uploading ${images.length} file(s)...`);
-  const results: UploadResult[] = [];
-  for (const image of images) {
-    results.push(await uploadOne(client, bucket, image, options));
-  }
-
-  return results;
+  return Promise.all(
+    images.map((image) => uploadOne(client, bucket, image, options)),
+  );
 }

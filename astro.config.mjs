@@ -18,8 +18,9 @@ function serveMedia() {
       if (!existsSync(mediaDir)) return;
       server.middlewares.use("/media", (req, res, next) => {
         const filePath = join(mediaDir, decodeURIComponent(req.url ?? ""));
-        if (!existsSync(filePath)) return next();
-        createReadStream(filePath).pipe(res);
+        createReadStream(filePath)
+          .on("error", () => next())
+          .pipe(res);
       });
     },
   };
