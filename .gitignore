@@ -5,6 +5,10 @@ node_modules/
 dist/
 .astro/
 
+# Env
+.env
+.env.*
+
 # logs
 npm-debug.log*
 yarn-debug.log*
@@ -14,8 +18,11 @@ pnpm-debug.log*
 # macOS-specific files
 .DS_Store
 
+# IDE
+# .vscode/
+
 # Lighthouse CI
 .lighthouseci/
 
-# IDE
-# .vscode/
+# Local media (uploaded to R2)
+media/
