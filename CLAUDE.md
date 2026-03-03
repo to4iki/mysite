@@ -7,14 +7,6 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 
 プロジェクトの開発環境の構築には、mise を使う。
 
-## セットアップ
-
-```bash
-mise install
-bun install
-lefthook install
-```
-
 ## 技術スタック
 
 - Astro v5: SSG/SSR対応
@@ -23,12 +15,14 @@ lefthook install
 
 ## ディレクトリ構造
 
+- `docs/` - ドキュメント一覧
 - `public/` - 静的アセット（そのままコピーされる）
+- `scripts/r2/` - Cloudflare R2 へのアップロードスクリプトなど
 - `src/assets/` - ビルド時に処理・最適化されるアセット
 - `src/components/`: - 再利用可能なUIコンポーネント
 - `src/content/blog/` - Content Collectionsで管理するブログ記事
-- `src/layouts` - ページテンプレート
-- `src/pages` - ルーティングとページ
+- `src/layout/` - ページテンプレート
+- `src/pages/` - ルーティングとページ
 
 ## 開発コマンド
 
