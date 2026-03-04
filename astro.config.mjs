@@ -14,6 +14,7 @@ function serveMedia() {
   const mediaDir = resolve("media");
   return {
     name: "serve-media",
+    apply: "serve",
     configureServer(/** @type {import("vite").ViteDevServer} */ server) {
       if (!existsSync(mediaDir)) return;
       server.middlewares.use("/media", (req, res, next) => {
