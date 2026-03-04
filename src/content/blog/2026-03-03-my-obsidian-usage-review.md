@@ -2,7 +2,7 @@
 title: "Obsidianの使い方を見直した"
 description: ""
 pubDate: "2026-03-03"
-tags: [Tool]
+tags: [Obsidian]
 ---
 
 元々はDailyノートを作成しその日のタスクやメモを管理していたり、ユニークノートクリエイターを使い [Zettelkasten法](https://ja.wikipedia.org/wiki/%E3%83%84%E3%82%A7%E3%83%83%E3%83%86%E3%83%AB%E3%82%AB%E3%82%B9%E3%83%86%E3%83%B3) を試していたが、重厚に感じてきたので、より軽量でシンプルな仕組みに見直した。
