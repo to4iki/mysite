@@ -7,6 +7,7 @@
   --color-foreground: #113340;
   --color-background: #ffffff;
   --color-primary: #007a9e;
+  --color-inline-code: #e8f0f2;
 }
 
 @layer base {
@@ -30,5 +31,16 @@
 
   .prose .footnotes > :first-child {
     @apply hidden;
+  }
+}
+
+@layer utilities {
+  .prose :not(pre) > code {
+    @apply rounded px-1.5 py-0.5 font-mono text-[0.875em] bg-inline-code;
+  }
+
+  .prose :not(pre) > code::before,
+  .prose :not(pre) > code::after {
+    content: none;
   }
 }
