@@ -34,6 +34,7 @@ export default defineConfig({
   integrations: [sitemap()],
   adapter: cloudflare({
     imageService: "compile",
+    prerenderEnvironment: "node",
   }),
   vite: {
     plugins: [tailwindcss(), serveMedia()],

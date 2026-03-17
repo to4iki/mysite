@@ -1,12 +1,12 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mysite",
-  "main": "dist/_worker.js/index.js",
+  "main": "@astrojs/cloudflare/entrypoints/server",
   "compatibility_date": "2026-02-03",
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "binding": "ASSETS",
-    "directory": "./dist"
+    "directory": "./dist/client"
   },
   "workers_dev": false,
   "routes": [
