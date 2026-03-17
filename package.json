@@ -13,13 +13,13 @@
     "r2:replace-paths": "bun run scripts/r2/replace-paths.ts"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^12.6.12",
-    "@astrojs/rss": "^4.0.15",
-    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/cloudflare": "^13.1.2",
+    "@astrojs/rss": "^4.0.17",
+    "@astrojs/sitemap": "^3.7.1",
     "@aws-sdk/client-s3": "^3.1000.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.1",
-    "astro": "^5.18.0",
+    "astro": "^6",
     "remark-github-blockquote-alert": "^2.0.1",
     "remark-link-card-plus": "^0.7.3",
     "satori": "^0.19.2",

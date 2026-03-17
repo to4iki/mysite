@@ -12,10 +12,10 @@ const ogpImagePath = `/blog/${slug}/ogp.png`;
 ---
 
 <BaseLayout title={title} description={description} image={ogpImagePath}>
-  <article class="prose prose-sm py-4 md:prose-base">
+  <article class="prose prose-sm py-2 md:prose-base">
     <div>
-      <div class="mb-2 py-2 leading-none">
-        <div class="mb-4 text-l font-bold">
+      <div class="mb-1 py-1 leading-none">
+        <div class="mb-2 text-l font-bold">
           <FormattedDate date={pubDate} />
           {
             updatedDate && (

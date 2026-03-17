@@ -10,7 +10,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 
 ## 技術スタック
 
-- Astro v5: SSG/SSR対応
+- Astro v6: SSG/SSR対応
 - Tailwind CSS v4: UI/スタイリング
 - biome: リンター及びフォーマッター (astroファイルはexperimentalモード)
 
