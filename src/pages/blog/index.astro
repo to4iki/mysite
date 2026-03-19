@@ -5,13 +5,9 @@ import PageHeaderText from "../../components/PageHeaderText.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const blogPosts = await getCollection("blog", (post) => {
-  if (import.meta.env.PROD) {
-    return post.data.draft !== true;
-  } else {
-    return true;
-  }
-});
+const blogPosts = await getCollection("blog", (post) =>
+  import.meta.env.PROD ? post.data.draft !== true : true,
+);
 const posts = blogPosts.sort((a, b) => {
   return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
 });

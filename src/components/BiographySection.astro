@@ -16,7 +16,7 @@ const { title, items } = Astro.props;
       items.map((item) => (
         <li>
           <span class="mr-2">{item.icon}</span>
-          <a href={item.url} target="_blank" rel="noopener noreferrer">{item.label}</a>
+          <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`${item.label} (外部サイトへ移動)`}>{item.label}</a>
         </li>
       ))
     }
