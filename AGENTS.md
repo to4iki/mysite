@@ -22,7 +22,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 - `src/assets/` - ビルド時に処理・最適化されるアセット
 - `src/components/`: - 再利用可能なUIコンポーネント
 - `src/content/blog/` - Content Collectionsで管理するブログ記事
-- `src/layout/` - ページテンプレート
+- `src/layouts/` - ページテンプレート
 - `src/pages/` - ルーティングとページ
 
 ## 開発コマンド
