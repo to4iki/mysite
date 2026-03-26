@@ -11,11 +11,10 @@ const { title, items } = Astro.props;
 
 <section>
   <h2 class="text-2xl font-bold mb-4">{title}</h2>
-  <ul class="space-y-2">
+  <ul class="list-disc list-inside space-y-2">
     {
       items.map((item) => (
         <li>
-          <span class="mr-2">{item.icon}</span>
           <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`${item.label} (外部サイトへ移動)`}>{item.label}</a>
         </li>
       ))
