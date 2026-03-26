@@ -1,14 +1,37 @@
 ---
+import FacebookIcon from "../components/icons/FacebookIcon.astro";
+import GitHubIcon from "../components/icons/GitHubIcon.astro";
+import XIcon from "../components/icons/XIcon.astro";
 import PageHeaderText from "../components/PageHeaderText.astro";
+import SocialIconLink from "../components/SocialIconLink.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <PageHeaderText>to4iki.com</PageHeaderText>
-  <div class="mb-10 text-center">
-    <p class="text-2xl font-medium md:text-3xl">
-      Welcome to my personal site.🏡
-    </p>
-  </div>
+  <PageHeaderText>ABOUT ME</PageHeaderText>
+  <section class="flex items-center gap-6 mb-12 max-md:flex-col max-md:items-center max-md:text-center">
+    <img
+      src="/biography.avif"
+      alt="Toshiki Takezawa のプロフィール写真"
+      width="128"
+      height="128"
+      class="w-32 h-32 rounded-2xl object-cover shrink-0 max-md:w-28 max-md:h-28"
+    />
+    <div>
+      <h2 class="text-4xl font-bold mb-2 max-md:text-3xl">Toshiki Takezawa (@to4iki)</h2>
+      <p class="text-xl text-muted mb-1 max-md:text-lg">software Engineer working at Mirrativ, Inc.</p>
+      <div class="flex items-center gap-2 mt-4 max-md:justify-center">
+        <SocialIconLink href="https://x.com/to4iki" label="X のプロフィール (外部サイトへ移動)">
+          <XIcon />
+        </SocialIconLink>
+        <SocialIconLink href="https://github.com/to4iki" label="GitHub のプロフィール (外部サイトへ移動)">
+          <GitHubIcon />
+        </SocialIconLink>
+        <SocialIconLink href="https://www.facebook.com/toshiki.takezawa" label="Facebook のプロフィール (外部サイトへ移動)">
+          <FacebookIcon />
+        </SocialIconLink>
+      </div>
+    </div>
+  </section>
 </BaseLayout>
