@@ -37,3 +37,24 @@ jobs:
         run: bun run build
       - name: Run Lighthouse CI
         run: bun run lhci
+
+  a11y:
+    name: Accessibility Check
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "lts/*"
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Install Playwright browsers
+        run: bunx playwright install chromium --with-deps
+      - name: Check a11y
+        run: |
+          bun run build
+          bun run a11y-check

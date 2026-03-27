@@ -29,6 +29,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 
 - `bun run dev` - 開発サーバー
 - `bun run format` - biomeでフォーマット
+- `bun run a11y-check` - アクセシビリティチェック (要事前ビルド)
 
 ## Moduler Rules
 
