@@ -27,15 +27,19 @@ function serveMedia() {
   };
 }
 
+const isDev = process.env.NODE_ENV !== "production";
+
 // https://astro.build/config
 export default defineConfig({
   output: "static",
   site: "https://to4iki.com",
   integrations: [sitemap()],
-  adapter: cloudflare({
-    imageService: "compile",
-    prerenderEnvironment: "node",
-  }),
+  adapter: isDev
+    ? undefined
+    : cloudflare({
+        imageService: "compile",
+        prerenderEnvironment: "node",
+      }),
   vite: {
     plugins: [tailwindcss(), serveMedia()],
   },
