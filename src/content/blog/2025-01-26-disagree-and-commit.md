@@ -2,7 +2,8 @@
 title: "納得感の無い変化は受け入れるのが難しいがコミットする"
 description: "Disagree and commit"
 pubDate: "2025-01-26"
-tags: [雑記]
+tags:
+  - "雑記"
 ---
 
 > [!NOTE]

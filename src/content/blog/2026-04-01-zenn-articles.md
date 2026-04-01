@@ -2,7 +2,8 @@
 title: "Zennの記事をGitHubリポジトリで管理する"
 description: ""
 pubDate: "2026-04-01"
-tags: [Zenn]
+tags:
+  - "Zenn"
 ---
 
 zenn.dev の個人の記事に関して、ローカルの好きなエディタで書きたいので GitHub と連携するようにした。

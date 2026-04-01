@@ -2,7 +2,8 @@
 title: "「One Way Door」と「Two Way Door」"
 description: "one way door & two way door"
 pubDate: "2025-02-03"
-tags: [雑記]
+tags:
+  - "雑記"
 ---
 
 > [!NOTE]
