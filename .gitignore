@@ -27,3 +27,7 @@ pnpm-debug.log*
 
 # Local media (uploaded to R2)
 media/
+
+# Playwright
+playwright-report/
+test-results/
