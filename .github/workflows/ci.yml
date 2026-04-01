@@ -5,18 +5,28 @@ on:
     branches: [main]
     paths-ignore:
       - "README.md"
+      - "AGENTS.md"
       - "CLAUDE.md"
       - ".gitignore"
       - ".vscode/**"
       - ".claude/**"
+      - ".worktreeinclude"
+      - "docs/**"
+      - "scripts/r2/**"
+      - "lefthook.yml"
   pull_request:
     branches: [main]
     paths-ignore:
       - "README.md"
+      - "AGENTS.md"
       - "CLAUDE.md"
       - ".gitignore"
       - ".vscode/**"
       - ".claude/**"
+      - ".worktreeinclude"
+      - "docs/**"
+      - "scripts/r2/**"
+      - "lefthook.yml"
 
 jobs:
   lhci:
