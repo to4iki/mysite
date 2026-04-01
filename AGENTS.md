@@ -13,17 +13,22 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 - Astro v6: SSG/SSR対応
 - Tailwind CSS v4: UI/スタイリング
 - biome: リンター及びフォーマッター (astroファイルはexperimentalモード)
+- Playwright: E2Eテスト・アクセシビリティチェック
+- Lighthouse CI: パフォーマンス・品質計測
 
 ## ディレクトリ構造
 
 - `docs/` - ドキュメント一覧
+- `e2e/` - E2Eテスト（現在はアクセシビリティテストのみ）
 - `public/` - 静的アセット（そのままコピーされる）
 - `scripts/r2/` - Cloudflare R2 へのアップロードスクリプトなど
 - `src/assets/` - ビルド時に処理・最適化されるアセット
 - `src/components/`: - 再利用可能なUIコンポーネント
 - `src/content/blog/` - Content Collectionsで管理するブログ記事
 - `src/layouts/` - ページテンプレート
+- `src/ogp/` - OGP画像の動的生成 (satori + sharp を使ってSVG→PNG変換)
 - `src/pages/` - ルーティングとページ
+- `src/styles/` - グローバルスタイル・プラグイン用スタイル
 
 ## 開発コマンド
 
