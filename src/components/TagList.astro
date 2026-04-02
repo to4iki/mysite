@@ -1,0 +1,24 @@
+---
+type Props = {
+  tags: string[];
+};
+
+const { tags } = Astro.props;
+---
+
+{
+  tags.length > 0 && (
+    <ul class="flex flex-wrap gap-2 list-none m-0 p-0 justify-start not-prose">
+      {tags.map((tag) => (
+        <li>
+          <a
+            href={`/blog/tag/${tag}/`}
+            class="text-sm text-primary border border-primary/30 rounded-full px-3 py-0.5 no-underline"
+          >
+            {tag}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}

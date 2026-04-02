@@ -1,13 +1,14 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
+import TagList from "../components/TagList.astro";
 import BaseLayout from "./BaseLayout.astro";
 import "../styles/remark-link-card.css";
 import "remark-github-blockquote-alert/alert.css";
 
 type Props = CollectionEntry<"blog">["data"] & { slug: string };
 
-const { title, description, pubDate, updatedDate, slug } = Astro.props;
+const { title, description, pubDate, updatedDate, slug, tags } = Astro.props;
 const ogpImagePath = `/blog/${slug}/ogp.png`;
 ---
 
@@ -26,6 +27,7 @@ const ogpImagePath = `/blog/${slug}/ogp.png`;
           }
         </div>
         <h1 class="m-0 mb-2 text-3xl font-bold max-md:text-2xl">{title}</h1>
+        <TagList tags={tags} />
       </div>
       <slot />
     </div>

@@ -1,0 +1,56 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../../../components/FormattedDate.astro";
+import PageHeaderText from "../../../../components/PageHeaderText.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../../../../consts";
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+
+export const getStaticPaths = async () => {
+  const allPosts = await getCollection("blog", (post) =>
+    import.meta.env.PROD ? post.data.draft !== true : true,
+  );
+
+  const tags = [...new Set(allPosts.flatMap((post) => post.data.tags))];
+
+  return tags.map((tag) => {
+    const posts = allPosts
+      .filter((post) => post.data.tags.includes(tag))
+      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    return {
+      params: { tag },
+      props: { posts, tag },
+    };
+  });
+};
+
+type Props = {
+  posts: CollectionEntry<"blog">[];
+  tag: string;
+};
+
+const { posts, tag } = Astro.props;
+---
+
+<BaseLayout title={`#${tag} | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
+  <PageHeaderText>#{tag}</PageHeaderText>
+  <ul class="list-none m-0 p-0">
+    {
+      posts.map((post) => (
+        <li class="py-3 border-b">
+          <a
+            href={`/blog/${post.id}/`}
+            class="flex items-baseline gap-6 no-underline max-md:flex-col max-md:gap-1 hover:text-primary"
+          >
+            <span class="text-lg font-bold shrink-0 min-w-32 tabular-nums max-md:min-w-0">
+              <FormattedDate date={post.data.pubDate} />
+            </span>
+            <span class="text-xl font-semibold max-md:text-lg">
+              {post.data.title}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
