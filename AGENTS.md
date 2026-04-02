@@ -27,7 +27,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 - `src/content/blog/` - Content Collectionsで管理するブログ記事
 - `src/layouts/` - ページテンプレート
 - `src/ogp/` - OGP画像の動的生成 (satori + sharp を使ってSVG→PNG変換)
-- `src/pages/` - ルーティングとページ
+- `src/pages/` - ルーティングとページ（`/blog/tag/[tag]/` でタグ別記事一覧を生成）
 - `src/styles/` - グローバルスタイル・プラグイン用スタイル
 
 ## 開発コマンド

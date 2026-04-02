@@ -3,7 +3,8 @@ title: "ブログの画像管理を Cloudflare R2 に移行した"
 description: ""
 pubDate: "2026-03-04"
 tags:
-  - "Cloudflare"
+  - "blog"
+  - "cloudflare"
 ---
 
 スケーラビリティを考えると、画像は専用ストレージに格納しておきたいので Cloudflare R2 を使うことにした。
