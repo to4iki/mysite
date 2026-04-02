@@ -3,8 +3,9 @@ title: "ブログを構築した"
 description: ""
 pubDate: "2026-02-08"
 tags:
-  - "Astro"
-  - "Cloudflare"
+  - "blog"
+  - "astro"
+  - "cloudflare"
 ---
 
 ## モチベーション
