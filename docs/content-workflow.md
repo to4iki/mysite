@@ -4,6 +4,7 @@
 
 - `src/content/blog/YYYY-MM-DD-{title}.md` の形式で作成
 - 画像は `media/blog/` に配置する
+  - ブログ内からのアクセス: `![](/media/blog/xxx.png)`
 - タグは英小文字で統一する（例: `"astro"`, `"cloudflare"`, `"note"`）
 - タグを設定すると、ブログ詳細ページにタグが表示され、`/blog/tag/{tag}/` でタグ別一覧ページが生成される
 
