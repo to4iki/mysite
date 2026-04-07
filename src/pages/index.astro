@@ -1,4 +1,5 @@
 ---
+import BlueskyIcon from "../components/icons/BlueskyIcon.astro";
 import FacebookIcon from "../components/icons/FacebookIcon.astro";
 import GitHubIcon from "../components/icons/GitHubIcon.astro";
 import XIcon from "../components/icons/XIcon.astro";
@@ -24,6 +25,9 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       <div class="flex items-center gap-2 mt-4 max-md:justify-center">
         <SocialIconLink href="https://x.com/to4iki" label="X のプロフィール (外部サイトへ移動)">
           <XIcon />
+        </SocialIconLink>
+        <SocialIconLink href="https://bsky.app/profile/to4iki.bsky.social" label="Bluesky のプロフィール (外部サイトへ移動)">
+          <BlueskyIcon />
         </SocialIconLink>
         <SocialIconLink href="https://github.com/to4iki" label="GitHub のプロフィール (外部サイトへ移動)">
           <GitHubIcon />
