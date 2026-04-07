@@ -39,3 +39,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 ## Moduler Rules
 
 - `code-style.md` - コードスタイル
+
+## Design System
+
+- `DESIGN.md` - デザイン制約やツールについて

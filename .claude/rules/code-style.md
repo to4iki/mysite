@@ -30,6 +30,5 @@ paths:
 
 ### スタイル
 
-- Tailwind CSS のユーティリティクラスを使う（カスタム配色トークン: `text-muted`, `text-foreground`, `border-border` 等）
-- Astro のスコープ付き `<style>` はTailwindで表現しにくい場合のみ使う
 - グローバルスタイル・外部プラグイン用CSSは `src/styles/` に配置
+- カラートークンやコンポーネントのビジュアル仕様は `DESIGN.md` を参照
