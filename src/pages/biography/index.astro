@@ -7,35 +7,37 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 <BaseLayout title={`Biography | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
   <PageHeaderText>BIOGRAPHY</PageHeaderText>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
+  <div class="flex flex-col gap-y-8 w-full px-16">
     <BiographySection
-      title="PLATFORM"
+      title="LINKS"
       items={[
-        { label: "Zenn", url: "https://zenn.dev/to4iki" },
-        { label: "note", url: "https://note.com/tto4iki" },
-        { label: "sizu", url: "https://sizu.me/to4iki" },
-        { label: "SpeakerDeck", url: "https://speakerdeck.com/to4iki" },
+        { title: "Zenn", url: "https://zenn.dev/to4iki", description: "Technical writing and notes" },
+        { title: "sizu", url: "https://sizu.me/to4iki", description: "Short diary entry" },
+        { title: "SpeakerDeck", url: "https://speakerdeck.com/to4iki", description: "Presentation slides" },
       ]}
     />
     <BiographySection
-      title="OTHER"
+      title="CAREER"
       items={[
-        { label: "Qiita", url: "https://qiita.com/to4iki" },
-        { label: "hatenablog", url: "https://to4iki.hatenablog.jp" },
-        { label: "Medium", url: "https://medium.com/@to4iki" },
-      ]}
-    />
-    <BiographySection
-      title="RESUME"
-      items={[
-        { label: "Wantedly", url: "https://www.wantedly.com/id/to4iki" },
+        { title: "resume", url: "https://github.com/to4iki/resume", description: "Work history and skills" },
+        { title: "Wantedly", url: "https://www.wantedly.com/id/to4iki", description: "Professional profile" },
+        { title: "YOUTRUST", url: "https://youtrust.jp/users/to4iki", description: "Career and trust network" },
       ]}
     />
     <BiographySection
       title="BOOK"
       items={[
-        { label: "WEB+DB PRESS Vol.104", url: "https://www.amazon.co.jp/dp/4774196886" },
-        { label: "AbemaTV iOS Tech Book", url: "https://techbookfest.org/product/261920001" },
+        { title: "WEB+DB PRESS Vol.104", url: "https://www.amazon.co.jp/dp/4774196886" },
+        { title: "AbemaTV iOS Tech Book", url: "https://techbookfest.org/product/261920001" },
+      ]}
+    />
+    <BiographySection
+      title="OTHER LINKS"
+      items={[
+        { title: "Qiita", url: "https://qiita.com/to4iki", description: "Archived" },
+        { title: "note", url: "https://note.com/tto4iki", description: "Archived" },
+        { title: "hatenablog", url: "https://to4iki.hatenablog.jp", description: "Archived" },
+        { title: "Medium", url: "https://medium.com/@to4iki", description: "Archived" },
       ]}
     />
   </div>

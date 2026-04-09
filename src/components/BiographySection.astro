@@ -11,11 +11,14 @@ const { title, items } = Astro.props;
 
 <section>
   <h2 class="text-2xl font-bold mb-4">{title}</h2>
-  <ul class="list-disc list-inside space-y-2">
+  <ul class="list-none m-0 p-0">
     {
       items.map((item) => (
-        <li>
-          <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`${item.label} (外部サイトへ移動)`}>{item.label}</a>
+        <li class="py-4 border-b border-divider">
+          <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`${item.title} (外部サイトへ移動)`} class="flex justify-between items-baseline">
+            <span class="font-bold">{item.title}</span>
+            {item.description && <span class="text-sm">{item.description}</span>}
+          </a>
         </li>
       ))
     }

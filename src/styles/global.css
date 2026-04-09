@@ -8,6 +8,7 @@
   --color-background: #ffffff;
   --color-primary: #007a9e;
   --color-inline-code: #e8f0f2;
+  --color-divider: color-mix(in srgb, var(--color-foreground) 50%, transparent);
 }
 
 @layer base {
@@ -26,7 +27,7 @@
 
 @layer components {
   .prose .footnotes {
-    @apply border-t border-foreground/30 mt-8;
+    @apply border-t border-divider mt-8;
   }
 
   .prose .footnotes > :first-child {
