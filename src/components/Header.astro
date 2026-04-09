@@ -22,17 +22,17 @@ import RssIcon from "./icons/RssIcon.astro";
         <HeaderLink href="/">TOP</HeaderLink>
         <HeaderLink href="/blog">BLOG</HeaderLink>
         <HeaderLink href="/biography">BIOGRAPHY</HeaderLink>
-        <a href="/rss.xml" aria-label="RSS Feed" class="text-muted hover:text-foreground transition-colors">
+        <a href="/rss.xml" aria-label="RSS Feed" class="text-foreground transition-colors">
           <RssIcon />
         </a>
       </div>
     </div>
 
-    <div id="mobile-nav" class="hidden md:hidden flex-col gap-4 pt-4 pb-4 border-b border-border">
+    <div id="mobile-nav" class="hidden md:hidden flex-col gap-4 pt-4 pb-4 border-b border-divider">
       <HeaderLink href="/">TOP</HeaderLink>
       <HeaderLink href="/blog">BLOG</HeaderLink>
       <HeaderLink href="/biography">BIOGRAPHY</HeaderLink>
-      <a href="/rss.xml" aria-label="RSS Feed" class="text-muted hover:text-foreground transition-colors flex items-center gap-2">
+      <a href="/rss.xml" aria-label="RSS Feed" class="text-foreground transition-colors flex items-center gap-2">
         <RssIcon />
         <span class="text-lg font-semibold tracking-wide">RSS</span>
       </a>
