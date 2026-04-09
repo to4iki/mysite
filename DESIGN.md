@@ -22,8 +22,7 @@
 ### Text & Neutral
 
 - **Deep Teal-Dark** (`#113340`): 本文テキスト、アイコンのデフォルト色。黒より柔らかく、落ち着いた印象を与える
-- **Muted Gray** (`text-muted`, Tailwind v4 デフォルト): 補助テキスト、非アクティブなナビリンク。主テキストに対してトーンを落とす
-- **Soft Border** (`border-border`, Tailwind v4 デフォルト): 区切り線、モバイルナビの区切り
+- **Divider** (`border-divider`, `color-mix(in srgb, var(--color-foreground) 50%, transparent)`): 区切り線、リスト行の下ボーダー、フットノート上部の罫線。foreground を半透明にして主張を抑える
 
 ### Surface
 
@@ -66,7 +65,7 @@
 ### Links
 
 - **テキストリンク**: 下線なし。200ms の色遷移でホバー時に Teal Accent (`#007a9e`) へ変化
-- **ナビリンク**: セミボールド、やや広い字間。アクティブ状態は Teal Accent、非アクティブは Muted Gray
+- **ナビリンク**: セミボールド、やや広い字間。アクティブ状態は Teal Accent、非アクティブは Deep Teal-Dark
 
 ### Tags（ピル型ラベル）
 
@@ -116,8 +115,8 @@ Tailwind v4 のデフォルトスペーシングを使用。
 
 ### Grid
 
-- 基本は単一カラムレイアウト
-- BIOGRAPHY ページのみ 3 カラムグリッド（モバイルは 1 カラム）
+- 全ページ単一カラムレイアウト
+- BIOGRAPHY ページはセクションを `flex flex-col gap-y-8` で縦積みし、`px-16` で内側の余白を追加
 
 ### Responsive
 
@@ -132,7 +131,7 @@ Tailwind v4 のデフォルトスペーシングを使用。
 ### Do（推奨）
 
 - Tailwind CSS のユーティリティクラスで直接スタイリングする
-- 定義済みのカラートークン（`foreground`, `primary`, `muted` 等）を使う
+- 定義済みのカラートークン（`foreground`, `primary`, `divider` 等）を使う
 - `prose` クラス（`@tailwindcss/typography`）をブログ記事本文に使う
 - ホバーエフェクトは `transition-colors duration-200` で色変化のみにする
 - リンクは下線なし (`no-underline`) にする
@@ -152,6 +151,7 @@ Primary Color: #007a9e (Teal Accent)
 Text Color: #113340 (Deep Teal-Dark)
 Background: #ffffff (Pure White)
 Inline Code BG: #e8f0f2 (Ice Blue)
+Divider: color-mix(in srgb, foreground 50%, transparent)
 Font: system-ui, sans-serif
 Body Line Height: leading-relaxed (1.625)
 Max Width: 720px (--max-width-prose)
