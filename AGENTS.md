@@ -13,6 +13,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 - Astro v6: SSG/SSR対応
 - Tailwind CSS v4: UI/スタイリング
 - biome: リンター及びフォーマッター (astroファイルはexperimentalモード)
+- Knip: 未使用コード・依存パッケージの検出
 - Playwright: E2Eテスト・アクセシビリティチェック
 - Lighthouse CI: パフォーマンス・品質計測
 
@@ -34,6 +35,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 
 - `bun run dev` - 開発サーバー
 - `bun run format` - biomeでフォーマット
+- `bun run knip` - 未使用コード・依存パッケージの検出
 - `bun run a11y-check` - アクセシビリティチェック (要事前ビルド)
 
 ## Moduler Rules

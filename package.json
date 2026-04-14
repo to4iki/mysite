@@ -11,7 +11,8 @@
     "lhci": "lhci autorun",
     "r2:upload": "bun run scripts/r2/upload-images.ts",
     "r2:replace-paths": "bun run scripts/r2/replace-paths.ts",
-    "a11y-check": "playwright test"
+    "a11y-check": "playwright test",
+    "knip": "knip"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.1.8",
@@ -31,6 +32,7 @@
     "@axe-core/playwright": "^4.11.1",
     "@biomejs/biome": "^2.4.11",
     "@lhci/cli": "^0.15.1",
-    "@playwright/test": "^1.59.1"
+    "@playwright/test": "^1.59.1",
+    "knip": "^6.4.1"
   }
 }
