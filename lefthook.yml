@@ -1,3 +1,11 @@
+pre-push:
+  commands:
+    knip:
+      run: bun run knip
+      skip:
+        - merge
+        - rebase
+
 pre-commit:
   parallel: true
   commands:
