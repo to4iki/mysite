@@ -23,10 +23,10 @@ const posts = blogPosts.sort((a, b) => {
             href={`/blog/${post.id}/`}
             class="flex items-baseline gap-6 no-underline max-md:flex-col max-md:gap-1 hover:text-primary"
           >
-            <span class="text-lg font-bold shrink-0 min-w-32 tabular-nums max-md:min-w-0">
+            <span class="text-base font-bold shrink-0 min-w-32 tabular-nums max-md:min-w-0">
               <FormattedDate date={post.data.pubDate} />
             </span>
-            <span class="text-xl font-semibold max-md:text-lg">{post.data.title}</span>
+            <span class="text-lg font-semibold max-md:text-base">{post.data.title}</span>
           </a>
         </li>
       ))
