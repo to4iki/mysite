@@ -49,8 +49,9 @@
 | Heading 1  | text-4xl (2.25rem)  | 700     | メイン見出し（名前等） |
 | Heading 2  | text-3xl (1.875rem) | 700     | ブログ記事タイトル     |
 | Heading 3  | text-2xl (1.5rem)   | 700     | セクション見出し       |
-| Body Large | text-xl (1.25rem)   | 600     | ブログ一覧のタイトル   |
-| Body       | text-lg (1.125rem)  | 600-700 | ナビリンク、日付       |
+| Body Large | text-lg (1.125rem)  | 600     | ブログ一覧のタイトル   |
+| Body       | text-lg (1.125rem)  | 600-700 | ナビリンク             |
+| Body Date  | text-base (1rem)    | 700     | ブログ一覧の日付       |
 | Body Small | text-sm (0.875rem)  | 400     | タグ、補足テキスト     |
 
 ### 行間・字間
@@ -100,7 +101,7 @@
 
 ### Container
 
-- **最大幅**: 720px（`--max-width-prose`）で中央揃え
+- **最大幅**: 768px（`max-w-3xl`）で中央揃え
 - **水平パディング**: `px-6`（モバイル: `px-4`）
 
 ### Spacing
@@ -154,7 +155,7 @@ Inline Code BG: #e8f0f2 (Ice Blue)
 Divider: color-mix(in srgb, foreground 50%, transparent)
 Font: system-ui, sans-serif
 Body Line Height: leading-relaxed (1.625)
-Max Width: 720px (--max-width-prose)
+Max Width: 768px (max-w-3xl)
 Shadows: なし
 ```
 
