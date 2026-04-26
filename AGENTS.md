@@ -24,7 +24,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 - `public/` - 静的アセット（そのままコピーされる）
 - `scripts/r2/` - Cloudflare R2 へのアップロードスクリプトなど
 - `src/assets/` - ビルド時に処理・最適化されるアセット
-- `src/components/`: - 再利用可能なUIコンポーネント
+- `src/components/` - 再利用可能なUIコンポーネント
 - `src/content/blog/` - Content Collectionsで管理するブログ記事
 - `src/layouts/` - ページテンプレート
 - `src/ogp/` - OGP画像の動的生成 (satori + sharp を使ってSVG→PNG変換)
@@ -38,7 +38,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 - `bun run knip` - 未使用コード・依存パッケージの検出
 - `bun run a11y-check` - アクセシビリティチェック (要事前ビルド)
 
-## Moduler Rules
+## Modular Rules
 
 - `code-style.md` - コードスタイル
 
