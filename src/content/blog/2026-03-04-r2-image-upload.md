@@ -1,6 +1,6 @@
 ---
 title: "ブログの画像管理を Cloudflare R2 に移行した"
-description: ""
+description: "ブログ画像をCloudflare R2で管理するための運用フローと、変換・アップロード・パス置換の実装ポイントを整理した。"
 pubDate: "2026-03-04"
 tags:
   - "blog"

@@ -1,6 +1,6 @@
 ---
 title: "ブログを構築した"
-description: ""
+description: "AstroとCloudflare Workersを軸に、個人ブログの技術選定と開発・運用環境の構築方針をまとめた。"
 pubDate: "2026-02-08"
 tags:
   - "blog"

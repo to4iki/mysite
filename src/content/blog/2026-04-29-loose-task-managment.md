@@ -1,6 +1,6 @@
 ---
 title: "ゆるいタスク管理が定着してきた"
-description: ""
+description: "Appleリマインダーを軸にしたシンプルな個人タスク管理の運用ルールと、Obsidianとの使い分けを振り返る。"
 pubDate: "2026-04-29"
 tags:
   - "task-managment"

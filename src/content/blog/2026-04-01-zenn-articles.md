@@ -1,6 +1,6 @@
 ---
 title: "Zennの記事をGitHubリポジトリで管理する"
-description: ""
+description: "Zenn記事をGitHub連携でローカル執筆できる環境を整え、textlintとAIレビューを組み合わせた執筆フローを紹介する。"
 pubDate: "2026-04-01"
 tags:
   - "zenn"

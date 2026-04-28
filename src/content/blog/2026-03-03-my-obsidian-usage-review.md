@@ -1,6 +1,6 @@
 ---
 title: "Obsidianの使い方を見直した"
-description: ""
+description: "Obsidian運用を軽量化するため、Bases中心の整理方法やマンスリーノート化、最小限のプラグイン構成を見直した。"
 pubDate: "2026-03-03"
 tags:
   - "obsidian"
