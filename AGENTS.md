@@ -27,6 +27,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 - `src/components/` - 再利用可能なUIコンポーネント
 - `src/content/blog/` - Content Collectionsで管理するブログ記事
 - `src/layouts/` - ページテンプレート
+- `src/lib/` - ページ・コンポーネント間で共有するドメインロジックやヘルパー
 - `src/ogp/` - OGP画像の動的生成 (satori + sharp を使ってSVG→PNG変換)
 - `src/pages/` - ルーティングとページ（`/blog/tag/[tag]/` でタグ別記事一覧を生成）
 - `src/styles/` - グローバルスタイル・プラグイン用スタイル
