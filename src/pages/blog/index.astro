@@ -1,16 +1,14 @@
 ---
-import { getCollection } from "astro:content";
 import FormattedDate from "../../components/FormattedDate.astro";
 import PageHeaderText from "../../components/PageHeaderText.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  getVisibleBlogPosts,
+  sortBlogPostsByPubDateDesc,
+} from "../../lib/blog";
 
-const blogPosts = await getCollection("blog", (post) =>
-  import.meta.env.PROD ? post.data.draft !== true : true,
-);
-const posts = blogPosts.sort((a, b) => {
-  return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
-});
+const posts = sortBlogPostsByPubDateDesc(await getVisibleBlogPosts());
 ---
 
 <BaseLayout title={`Blog | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>

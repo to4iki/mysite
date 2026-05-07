@@ -1,10 +1,10 @@
-import { getCollection } from "astro:content";
 import type { APIRoute, GetStaticPaths } from "astro";
 import { SITE_TITLE } from "../../../consts";
+import { getVisibleBlogPosts } from "../../../lib/blog";
 import { generateOgpImage } from "../../../ogp/generate";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const posts = await getCollection("blog");
+  const posts = await getVisibleBlogPosts();
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { title: post.data.title },

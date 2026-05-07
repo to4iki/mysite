@@ -1,6 +1,6 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
-  "entry": ["scripts/**/*.ts"],
-  "project": ["src/**/*.{astro,ts}", "scripts/**/*.ts", "e2e/**/*.ts"],
+  "entry": ["src/**/*.astro", "scripts/**/*.ts"],
+  "project": ["src/**/*.ts", "scripts/**/*.ts", "e2e/**/*.ts"],
   "ignoreDependencies": ["tailwindcss", "@tailwindcss/typography", "vite"]
 }
