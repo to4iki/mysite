@@ -1,0 +1,4 @@
+# https://bun.com/docs/runtime/bunfig
+[install]
+ignoreScripts = true
+minimumReleaseAge = 86400
