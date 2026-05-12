@@ -1,7 +1,7 @@
 pre-push:
   commands:
     knip:
-      run: bun run knip
+      run: pnpm run knip
       skip:
         - merge
         - rebase
@@ -12,14 +12,14 @@ pre-commit:
     # https://biomejs.dev/ja/recipes/git-hooks/#lefthook
     biome:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc,astro}"
-      run: bun run biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
+      run: pnpm exec biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
       stage_fixed: true
       skip:
         - merge
         - rebase
     prettier:
       glob: "*.{md,mdx,yaml,yml}"
-      run: bunx prettier --write {staged_files}
+      run: pnpm dlx prettier --write {staged_files}
       stage_fixed: true
       skip:
         - merge
