@@ -9,17 +9,17 @@
 Playwright ブラウザ (Chromium) のインストール:
 
 ```bash
-bunx playwright install chromium
+pnpm exec playwright install chromium
 ```
 
 ### テスト実行
 
 ```bash
 # 事前にビルドが必要
-bun run build
+pnpm run build
 
 # アクセシビリティチェック
-bun run a11y-check
+pnpm run a11y-check
 ```
 
 ### テスト構成
@@ -32,6 +32,6 @@ bun run a11y-check
 
 ### 設計方針
 
-- ビルド済みの静的ファイルに対してテスト (`bun run preview`) し、本番同等の環境を検証する
+- ビルド済みの静的ファイルに対してテスト (`pnpm run preview`) し、本番同等の環境を検証する
 - ブラウザは Chromium のみ（CI 高速化のため）
 - pre-commit hook には含めない（ビルド必須で遅いため、CI でのみ実行）

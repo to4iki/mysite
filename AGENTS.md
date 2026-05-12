@@ -1,7 +1,7 @@
 # AI開発ガイド
 
 個人サイトのフロントエンド。
-JavaScriptランタイムとツールキットには Bun、デプロイ先には Cloudflare Workers を利用する。
+JavaScriptパッケージマネージャーには pnpm、デプロイ先には Cloudflare Workers を利用する。
 
 ## 開発環境
 
@@ -34,10 +34,10 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 
 ## 開発コマンド
 
-- `bun run dev` - 開発サーバー
-- `bun run format` - biomeでフォーマット
-- `bun run knip` - 未使用コード・依存パッケージの検出
-- `bun run a11y-check` - アクセシビリティチェック (要事前ビルド)
+- `pnpm run dev` - 開発サーバー
+- `pnpm run format` - biomeでフォーマット
+- `pnpm run knip` - 未使用コード・依存パッケージの検出
+- `pnpm run a11y-check` - アクセシビリティチェック (要事前ビルド)
 
 ## Modular Rules
 

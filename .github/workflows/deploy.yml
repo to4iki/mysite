@@ -21,16 +21,14 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: "lts/*"
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
+      - name: Setup mise
+        uses: jdx/mise-action@v3
       - name: Install Dependencies
-        run: bun install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Lint & Check
-        run: bun run lint
+        run: pnpm run lint
       - name: Build Astro
-        run: bun run build
+        run: pnpm run build
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:

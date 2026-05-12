@@ -5,7 +5,7 @@
 ```bash
 mise install
 mise trust
-bun install --frozen-lockfile
+pnpm install --frozen-lockfile
 lefthook install
 ```
 
