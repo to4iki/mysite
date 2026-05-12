@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: "lts/*"
       - name: Setup mise
-        uses: jdx/mise-action@v3
+        uses: jdx/mise-action@v4
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
       - name: Lint & Check
