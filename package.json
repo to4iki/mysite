@@ -33,6 +33,6 @@
     "@biomejs/biome": "^2.4.15",
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.60.0",
-    "knip": "^6.13.0"
+    "knip": "^6.14.1"
   }
 }
