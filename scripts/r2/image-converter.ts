@@ -12,7 +12,7 @@ const SUPPORTED_EXTENSIONS = new Set([
 ]);
 const MEDIA_DIR = join(process.cwd(), "media");
 
-async function collectEntries(dir: string): Promise<ImageEntry[]> {
+const collectEntries = async (dir: string): Promise<ImageEntry[]> => {
   const entries: ImageEntry[] = [];
   const items = await readdir(dir, { withFileTypes: true });
 
@@ -28,12 +28,12 @@ async function collectEntries(dir: string): Promise<ImageEntry[]> {
   }
 
   return entries;
-}
+};
 
-async function convertOne(
+const convertOne = async (
   entry: ImageEntry,
   maxWidth?: number,
-): Promise<ConvertedImage> {
+): Promise<ConvertedImage> => {
   const input = await readFile(entry.srcPath);
   let pipeline = sharp(input);
 
@@ -44,11 +44,11 @@ async function convertOne(
   const buffer = await pipeline.avif({ quality: 75, effort: 4 }).toBuffer();
 
   return { ...entry, buffer, sizeBytes: buffer.length };
-}
+};
 
-export async function convertImages(
+export const convertImages = async (
   options: Pick<UploadOptions, "maxWidth">,
-): Promise<ConvertedImage[]> {
+): Promise<ConvertedImage[]> => {
   const dirStat = await stat(MEDIA_DIR).catch(() => null);
   if (!dirStat?.isDirectory()) {
     console.log("[convert] media/ directory not found");
@@ -72,4 +72,4 @@ export async function convertImages(
   );
 
   return results;
-}
+};

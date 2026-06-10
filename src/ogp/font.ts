@@ -14,12 +14,16 @@ const FONT_CONFIGS: FontConfig[] = [
 
 const FONT_DIR = join(process.cwd(), "src/assets/font");
 
-export const loadFonts = async (): Promise<Font[]> => {
-  return Promise.all(
+// Cache across calls: fonts are static and read once per build, not per OGP image
+let fontsPromise: Promise<Font[]> | undefined;
+
+export const loadFonts = (): Promise<Font[]> => {
+  fontsPromise ??= Promise.all(
     FONT_CONFIGS.map(async ({ filename, weight }) => ({
       name: "Noto Sans JP",
       data: await readFile(join(FONT_DIR, filename)),
       weight,
     })),
   );
+  return fontsPromise;
 };

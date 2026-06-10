@@ -1,5 +1,5 @@
 ---
-import FormattedDate from "../../../../components/FormattedDate.astro";
+import BlogPostList from "../../../../components/BlogPostList.astro";
 import PageHeaderText from "../../../../components/PageHeaderText.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../../../consts";
 import BaseLayout from "../../../../layouts/BaseLayout.astro";
@@ -35,21 +35,5 @@ const { posts, tag } = Astro.props;
 
 <BaseLayout title={`#${tag} | ${SITE_TITLE}`} description={SITE_DESCRIPTION}>
   <PageHeaderText>#{tag}</PageHeaderText>
-  <ul class="list-none m-0 p-0">
-    {
-      posts.map((post) => (
-        <li class="py-3 border-b border-divider">
-          <a
-            href={`/blog/${post.id}/`}
-            class="flex items-baseline gap-6 no-underline max-md:flex-col max-md:gap-1 hover:text-primary"
-          >
-            <span class="text-base font-bold shrink-0 min-w-32 tabular-nums max-md:min-w-0">
-              <FormattedDate date={post.data.pubDate} />
-            </span>
-            <span class="text-lg font-semibold max-md:text-base">{post.data.title}</span>
-          </a>
-        </li>
-      ))
-    }
-  </ul>
+  <BlogPostList posts={posts} />
 </BaseLayout>

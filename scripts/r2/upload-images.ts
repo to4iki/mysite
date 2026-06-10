@@ -2,19 +2,23 @@ import { convertImages } from "./image-converter.ts";
 import { uploadImages } from "./r2-uploader.ts";
 import type { UploadOptions } from "./types.ts";
 
-function parseArgs(args: string[]): UploadOptions {
+const parseArgs = (args: string[]): UploadOptions => {
   const dryRun = args.includes("--dry-run");
   let maxWidth: number | undefined;
 
   const maxWidthIdx = args.indexOf("--max-width");
-  if (maxWidthIdx !== -1 && args[maxWidthIdx + 1]) {
-    maxWidth = Number.parseInt(args[maxWidthIdx + 1], 10);
+  if (maxWidthIdx !== -1) {
+    const value = Number.parseInt(args[maxWidthIdx + 1] ?? "", 10);
+    if (!Number.isInteger(value) || value <= 0) {
+      throw new Error("--max-width requires a positive integer");
+    }
+    maxWidth = value;
   }
 
   return { dryRun, maxWidth };
-}
+};
 
-async function main() {
+const main = async () => {
   const options = parseArgs(process.argv.slice(2));
 
   console.log(
@@ -39,7 +43,7 @@ async function main() {
     }
     process.exit(1);
   }
-}
+};
 
 main().catch((e) => {
   console.error(e);
