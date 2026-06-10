@@ -28,6 +28,9 @@ on:
       - "scripts/r2/**"
       - "lefthook.yml"
 
+permissions:
+  contents: read
+
 jobs:
   lhci:
     name: Lighthouse CI

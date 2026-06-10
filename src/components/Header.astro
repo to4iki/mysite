@@ -47,17 +47,9 @@ import RssIcon from "./icons/RssIcon.astro";
     const nav = document.getElementById("mobile-nav");
     if (!nav) return;
 
-    const isHidden = nav.classList.contains("hidden");
-    if (isHidden) {
-      nav.classList.remove("hidden");
-      nav.classList.add("flex");
-      hamburgerMenu.setAttribute("aria-expanded", "true");
-      hamburgerMenu.setAttribute("aria-label", "メニューを閉じる");
-    } else {
-      nav.classList.add("hidden");
-      nav.classList.remove("flex");
-      hamburgerMenu.setAttribute("aria-expanded", "false");
-      hamburgerMenu.setAttribute("aria-label", "メニューを開く");
-    }
+    const isOpen = nav.classList.toggle("flex");
+    nav.classList.toggle("hidden", !isOpen);
+    hamburgerMenu.setAttribute("aria-expanded", String(isOpen));
+    hamburgerMenu.setAttribute("aria-label", isOpen ? "メニューを閉じる" : "メニューを開く");
   });
 </script>

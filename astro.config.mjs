@@ -1,7 +1,7 @@
 // @ts-check
 
 import { createReadStream, existsSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { resolve, sep } from "node:path";
 import cloudflare from "@astrojs/cloudflare";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
@@ -18,7 +18,21 @@ function serveMedia() {
     configureServer(/** @type {import("vite").ViteDevServer} */ server) {
       if (!existsSync(mediaDir)) return;
       server.middlewares.use("/media", (req, res, next) => {
-        const filePath = join(mediaDir, decodeURIComponent(req.url ?? ""));
+        let pathname;
+        try {
+          pathname = decodeURIComponent(
+            new URL(req.url ?? "", "http://localhost").pathname,
+          );
+        } catch {
+          next();
+          return;
+        }
+        const filePath = resolve(mediaDir, `.${pathname}`);
+        // Reject paths that resolve outside mediaDir (path traversal)
+        if (filePath !== mediaDir && !filePath.startsWith(mediaDir + sep)) {
+          next();
+          return;
+        }
         createReadStream(filePath)
           .on("error", () => next())
           .pipe(res);

@@ -5,11 +5,11 @@ import { R2_PUBLIC_URL } from "./const.ts";
 const CONTENT_DIR = join(process.cwd(), "src/content");
 const MEDIA_PATTERN = /!\[([^\]]*)\]\(\/media\/([^)]+)\)/g;
 
-function parseArgs(args: string[]): { dryRun: boolean } {
+const parseArgs = (args: string[]): { dryRun: boolean } => {
   return { dryRun: args.includes("--dry-run") };
-}
+};
 
-async function collectMdFiles(dir: string): Promise<string[]> {
+const collectMdFiles = async (dir: string): Promise<string[]> => {
   const items = await readdir(dir, { withFileTypes: true });
   const files: string[] = [];
 
@@ -23,9 +23,12 @@ async function collectMdFiles(dir: string): Promise<string[]> {
   }
 
   return files;
-}
+};
 
-async function processFile(filePath: string, dryRun: boolean): Promise<number> {
+const processFile = async (
+  filePath: string,
+  dryRun: boolean,
+): Promise<number> => {
   const content = await readFile(filePath, "utf-8");
   const displayPath = relative(CONTENT_DIR, filePath);
   let count = 0;
@@ -43,9 +46,9 @@ async function processFile(filePath: string, dryRun: boolean): Promise<number> {
   }
 
   return count;
-}
+};
 
-async function main() {
+const main = async () => {
   const { dryRun } = parseArgs(process.argv.slice(2));
 
   console.log(`[replace-paths] mode: ${dryRun ? "dry-run" : "replace"}`);
@@ -64,7 +67,7 @@ async function main() {
       `[replace-paths] ${totalReplacements} path(s) ${dryRun ? "to be replaced (dry-run)" : "replaced"}`,
     );
   }
-}
+};
 
 main().catch((e) => {
   console.error(e);

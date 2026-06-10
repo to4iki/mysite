@@ -6,45 +6,61 @@ import {
 import { R2_PUBLIC_URL } from "./const.ts";
 import type { ConvertedImage, UploadOptions, UploadResult } from "./types.ts";
 
-const s3Client = new S3Client({
-  region: "auto",
-  endpoint: `https://${process.env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-  credentials: {
-    accessKeyId: process.env.R2_ACCESS_KEY_ID ?? "",
-    secretAccessKey: process.env.R2_SECRET_ACCESS_KEY ?? "",
-  },
-});
-const bucket = process.env.R2_BUCKET_NAME ?? "";
+type R2Context = {
+  client: S3Client;
+  bucket: string;
+};
 
-async function objectExists(key: string): Promise<boolean> {
-  try {
-    await s3Client.send(new HeadObjectCommand({ Bucket: bucket, Key: key }));
-    return true;
-  } catch {
-    return false;
+const requireEnv = (name: string): string => {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`missing required environment variable: ${name}`);
   }
-}
+  return value;
+};
 
-async function uploadOne(
+const createR2Context = (): R2Context => ({
+  client: new S3Client({
+    region: "auto",
+    endpoint: `https://${requireEnv("R2_ACCOUNT_ID")}.r2.cloudflarestorage.com`,
+    credentials: {
+      accessKeyId: requireEnv("R2_ACCESS_KEY_ID"),
+      secretAccessKey: requireEnv("R2_SECRET_ACCESS_KEY"),
+    },
+  }),
+  bucket: requireEnv("R2_BUCKET_NAME"),
+});
+
+const objectExists = async (r2: R2Context, key: string): Promise<boolean> => {
+  try {
+    await r2.client.send(
+      new HeadObjectCommand({ Bucket: r2.bucket, Key: key }),
+    );
+    return true;
+  } catch (error) {
+    // Only "object not found" means absent; auth/network errors must surface
+    if (error instanceof Error && error.name === "NotFound") {
+      return false;
+    }
+    throw error;
+  }
+};
+
+const uploadOne = async (
+  r2: R2Context,
   image: ConvertedImage,
-  options: UploadOptions,
-): Promise<UploadResult> {
+): Promise<UploadResult> => {
   const publicUrl = `${R2_PUBLIC_URL}/${image.r2Key}`;
 
-  if (options.dryRun) {
-    console.log(`  [dry-run] ${image.r2Key} -> ${publicUrl}`);
-    return { r2Key: image.r2Key, publicUrl, success: true };
-  }
-
   try {
-    if (await objectExists(image.r2Key)) {
+    if (await objectExists(r2, image.r2Key)) {
       console.log(`  [skip] ${image.r2Key} (already exists)`);
       return { r2Key: image.r2Key, publicUrl, success: true };
     }
 
-    await s3Client.send(
+    await r2.client.send(
       new PutObjectCommand({
-        Bucket: bucket,
+        Bucket: r2.bucket,
         Key: image.r2Key,
         Body: image.buffer,
         ContentType: "image/avif",
@@ -59,17 +75,22 @@ async function uploadOne(
     console.error(`  [error] ${image.r2Key}: ${message}`);
     return { r2Key: image.r2Key, publicUrl, success: false, error: message };
   }
-}
+};
 
-export async function uploadImages(
+export const uploadImages = async (
   images: ConvertedImage[],
   options: UploadOptions,
-): Promise<UploadResult[]> {
+): Promise<UploadResult[]> => {
   if (options.dryRun) {
     console.log("[upload] dry-run mode");
-  } else {
-    console.log(`[upload] uploading ${images.length} file(s)...`);
+    return images.map((image) => {
+      const publicUrl = `${R2_PUBLIC_URL}/${image.r2Key}`;
+      console.log(`  [dry-run] ${image.r2Key} -> ${publicUrl}`);
+      return { r2Key: image.r2Key, publicUrl, success: true };
+    });
   }
 
-  return Promise.all(images.map((image) => uploadOne(image, options)));
-}
+  console.log(`[upload] uploading ${images.length} file(s)...`);
+  const r2 = createR2Context();
+  return Promise.all(images.map((image) => uploadOne(r2, image)));
+};
