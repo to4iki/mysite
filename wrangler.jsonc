@@ -8,6 +8,15 @@
     "binding": "ASSETS",
     "directory": "./dist/client"
   },
+  // Bind the existing KV namespace explicitly so wrangler reuses it instead of
+  // auto-provisioning on every CI deploy (which fails once the namespace exists).
+  // The @astrojs/cloudflare adapter enables KV-backed sessions via this binding.
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "318092e63fd64c1b8a3a20f5845531bc"
+    }
+  ],
   "workers_dev": false,
   "routes": [
     {
