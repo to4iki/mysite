@@ -29,10 +29,10 @@
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.11.3",
-    "@biomejs/biome": "^2.5.0",
+    "@axe-core/playwright": "^4.12.1",
+    "@biomejs/biome": "^2.5.1",
     "@lhci/cli": "^0.15.1",
-    "@playwright/test": "^1.60.0",
-    "knip": "^6.16.1"
+    "@playwright/test": "^1.61.1",
+    "knip": "^6.23.0"
   }
 }
