@@ -46,3 +46,12 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 ## Design System
 
 - `DESIGN.md` - デザイン制約やツールについて
+
+## Cursor Cloud specific instructions
+
+静的サイト (Astro v6 + Bun) で、起動が必要なバックエンドサービスは無い。依存は起動時の update script で復元済み。
+
+- ツールチェーンは `mise` 管理 (`bun`, `lefthook`)。`mise` は `~/.local/bin` にあり、対話シェルでは `~/.bashrc` 経由で有効化される。非対話/スクリプト実行で `bun` が見つからない場合は `mise exec -- <cmd>` を使う。
+- 開発サーバー: `bun run dev`（ポート 4321）。dev 時は Cloudflare アダプタを無効化して `output: static` で動く (`astro.config.mjs` 参照)。
+- a11y テスト (`bun run a11y-check`) は事前に `bun run build` が必須。Playwright は `bun run preview`（ビルド済み `dist`）を起動して検証する。Chromium は導入済み。
+- コマンドは `package.json` の scripts を参照（`lint` = biome, `knip`, `build`, `a11y-check` 等）。
