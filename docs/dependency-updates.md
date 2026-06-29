@@ -21,6 +21,21 @@ PRの氾濫を防ぐため、関連パッケージをグループ化している
 | tailwind         | `tailwindcss`, `@tailwindcss/*` |
 | dev-dependencies | 全ての devDependencies          |
 
+## 自動レビュー・マージ
+
+`.github/workflows/dependabot-auto-merge.yml` で patch / minor 更新を自動化している。
+
+| 更新種別 | 動作 |
+| -------- | ---- |
+| patch / minor | CI 成功後に自動 approve → squash merge |
+| major | 自動マージしない（手動レビューが必要） |
+
+### 前提設定
+
+リポジトリ Settings → Actions → General で **Allow GitHub Actions to create and approve pull requests** を有効にする。
+
+major 更新で CI が落ちた場合は、Dependabot PR ブランチに修正コミットを push して CI を通したうえで手動マージする。
+
 ## なぜ Dependabot か
 
 Renovate も検討したが、以下の理由で Dependabot を採用した。
