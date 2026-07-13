@@ -15,7 +15,7 @@
     "knip": "knip"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^14.1.1",
+    "@astrojs/cloudflare": "^14.1.2",
     "@astrojs/markdown-remark": "^7.2.1",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
