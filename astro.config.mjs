@@ -8,6 +8,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 import { remarkAlert } from "remark-github-blockquote-alert";
 import remarkLinkCard from "remark-link-card-plus";
+import { remarkYoutubeEmbed } from "./src/lib/remark-youtube-embed";
 
 // vite plugin to serve media/ directory at /media/ path in dev server
 function serveMedia() {
@@ -58,6 +59,6 @@ export default defineConfig({
     plugins: [tailwindcss(), serveMedia()],
   },
   markdown: {
-    remarkPlugins: [remarkLinkCard, remarkAlert],
+    remarkPlugins: [remarkYoutubeEmbed, remarkLinkCard, remarkAlert],
   },
 });

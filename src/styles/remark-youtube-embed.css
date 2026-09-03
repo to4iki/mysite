@@ -1,0 +1,9 @@
+@reference "./global.css";
+
+.remark-youtube-embed {
+  @apply relative mb-4 w-full overflow-hidden rounded-xl aspect-video;
+}
+
+.remark-youtube-embed iframe {
+  @apply absolute inset-0 h-full w-full border-0;
+}
