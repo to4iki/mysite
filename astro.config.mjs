@@ -3,6 +3,7 @@
 import { createReadStream, existsSync } from "node:fs";
 import { resolve, sep } from "node:path";
 import cloudflare from "@astrojs/cloudflare";
+import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
@@ -59,6 +60,8 @@ export default defineConfig({
     plugins: [tailwindcss(), serveMedia()],
   },
   markdown: {
-    remarkPlugins: [remarkYoutubeEmbed, remarkLinkCard, remarkAlert],
+    processor: unified({
+      remarkPlugins: [remarkYoutubeEmbed, remarkLinkCard, remarkAlert],
+    }),
   },
 });
