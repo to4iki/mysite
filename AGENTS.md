@@ -41,7 +41,7 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 
 ## Modular Rules
 
-- `code-style.md` - コードスタイル
+ファイル種別の詳細ルールは、対象ファイルの編集・レビュー時だけ各AIの rules から適用する。ここからは読み込まない。
 
 ## Design System
 

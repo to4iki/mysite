@@ -15,17 +15,18 @@ Claude Code と Cursor を併用するため、ルールとスキルは **エー
 
 ## モジュールルール
 
-ルール本文は `.agents/rules/*.md` に置く。Cursor / Claude Code 用のファイルは frontmatter で適用パターンだけを指定し、本文は `@` 構文で `.agents/rules/` をインポートする。
+ルール本文は `.agents/rules/*.md` に置く。Cursor / Claude Code 用のファイルは frontmatter で適用パターンだけを指定し、対象ファイルの編集・レビュー時に本体を読むよう指示する。
 
 `.cursor/rules/code-style.mdc`:
 
 ```mdc
 ---
+description: TypeScript と Astro のコードスタイル。src 配下の .ts / .astro を編集・レビューするときに適用する
 globs: src/**/*.ts,src/**/*.astro
 alwaysApply: false
 ---
 
-@.agents/rules/code-style.md
+対象ファイルを編集・レビューするときは、先に `.agents/rules/code-style.md` を読み、その内容に従う。
 ```
 
 `.claude/rules/code-style.md`:
@@ -33,13 +34,14 @@ alwaysApply: false
 ```md
 ---
 paths:
-  - "src/**/*.{ts,astro}"
+  - "src/**/*.ts"
+  - "src/**/*.astro"
 ---
 
-@.agents/rules/code-style.md
+対象ファイルを編集・レビューするときは、先に `.agents/rules/code-style.md` を読み、その内容に従う。
 ```
 
-新しいルールを追加するときは、`.agents/rules/` に本文を書き、`.cursor/rules/` と `.claude/rules/` にラッパーを置く。
+新しいルールを追加するときは、`.agents/rules/` に本文を書き、`.cursor/rules/` と `.claude/rules/` に同じ形のラッパーを置く。
 
 ## スキル
 
