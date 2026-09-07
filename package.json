@@ -26,7 +26,7 @@
     "remark-github-blockquote-alert": "^2.1.0",
     "remark-link-card-plus": "^0.8.0",
     "satori": "^0.29.0",
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.4",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
