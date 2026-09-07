@@ -5,7 +5,6 @@ pubDate: "2026-04-29"
 tags:
   - "task-management"
   - "obsidian"
-  - "tool"
 ---
 
 今までは、個人のタスク管理や、やりたいことのメモとして、TodoistやGitHub、Notion、Slack、todo.txtなど、いろんなツールや方法を活用していたが、2026年に入ってからはApple純正の「[リマインダー](https://apps.apple.com/jp/app/%E3%83%AA%E3%83%9E%E3%82%A4%E3%83%B3%E3%83%80%E3%83%BC/id1108187841)」アプリをざっくり使うことにし、その方法が定着してきた。

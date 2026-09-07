@@ -4,7 +4,7 @@ description: "Mission ControlからAeroSpaceへ切り替え、周辺ツールと
 pubDate: "2026-09-07"
 tags:
   - "aerospace"
-  - "tool"
+  - "mac"
 ---
 
 複数アプリの表示に関して、今までは macOS 標準の Mission Control の仮想デスクトップを4つほど作成し配置を割り当てて利用していたが、
