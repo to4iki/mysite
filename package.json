@@ -24,7 +24,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.1",
     "remark-github-blockquote-alert": "^2.1.0",
-    "remark-link-card-plus": "^0.8.0",
+    "remark-link-card-plus": "^0.8.1",
     "satori": "^0.33.4",
     "sharp": "^0.35.4",
     "tailwindcss": "^4.3.3"
