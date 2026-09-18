@@ -2,54 +2,55 @@
 import HeaderLink from "./HeaderLink.astro";
 import HamburgerIcon from "./icons/HamburgerIcon.astro";
 import RssIcon from "./icons/RssIcon.astro";
+
+const navItems = [
+  { href: "/", label: "TOP" },
+  { href: "/blog", label: "BLOG" },
+  { href: "/biography", label: "BIOGRAPHY" },
+] as const;
 ---
 
-<header class="max-w-prose mx-auto mb-6 px-6 py-3 max-md:px-4">
-  <nav>
-    <div class="flex items-center justify-end">
-      <button
-        id="hamburger-menu"
-        type="button"
-        aria-label="メニューを開く"
-        aria-expanded="false"
-        aria-controls="mobile-nav"
-        class="md:hidden flex flex-col justify-center gap-1.5 w-8 h-8 cursor-pointer"
+<header class="mx-auto mb-6 max-w-3xl px-6 py-3 max-md:px-4">
+  <nav aria-label="メイン">
+    <div class="hidden items-center justify-end gap-6 md:flex">
+      {
+        navItems.map((item) => (
+          <HeaderLink href={item.href}>{item.label}</HeaderLink>
+        ))
+      }
+      <a
+        href="/rss.xml"
+        aria-label="RSS Feed"
+        class="text-foreground transition-colors"
       >
-        <HamburgerIcon />
-      </button>
-
-      <div class="hidden md:flex items-center gap-6">
-        <HeaderLink href="/">TOP</HeaderLink>
-        <HeaderLink href="/blog">BLOG</HeaderLink>
-        <HeaderLink href="/biography">BIOGRAPHY</HeaderLink>
-        <a href="/rss.xml" aria-label="RSS Feed" class="text-foreground transition-colors">
-          <RssIcon />
-        </a>
-      </div>
-    </div>
-
-    <div id="mobile-nav" class="hidden md:hidden flex-col gap-4 pt-4 pb-4 border-b border-divider">
-      <HeaderLink href="/">TOP</HeaderLink>
-      <HeaderLink href="/blog">BLOG</HeaderLink>
-      <HeaderLink href="/biography">BIOGRAPHY</HeaderLink>
-      <a href="/rss.xml" aria-label="RSS Feed" class="text-foreground transition-colors flex items-center gap-2">
         <RssIcon />
-        <span class="text-lg font-semibold tracking-wide">RSS</span>
       </a>
     </div>
+
+    <details class="md:hidden">
+      <summary
+        class="flex cursor-pointer list-none justify-end [&::-webkit-details-marker]:hidden"
+        aria-label="メニュー"
+      >
+        <span class="flex h-8 w-8 flex-col justify-center gap-1.5" aria-hidden="true">
+          <HamburgerIcon />
+        </span>
+      </summary>
+      <div class="mt-4 flex flex-col gap-4 border-b border-divider pb-4">
+        {
+          navItems.map((item) => (
+            <HeaderLink href={item.href}>{item.label}</HeaderLink>
+          ))
+        }
+        <a
+          href="/rss.xml"
+          aria-label="RSS Feed"
+          class="flex items-center gap-2 text-foreground transition-colors"
+        >
+          <RssIcon />
+          <span class="text-lg font-semibold tracking-wide">RSS</span>
+        </a>
+      </div>
+    </details>
   </nav>
 </header>
-
-<script>
-  const hamburgerMenu = document.getElementById("hamburger-menu");
-
-  hamburgerMenu?.addEventListener("click", () => {
-    const nav = document.getElementById("mobile-nav");
-    if (!nav) return;
-
-    const isOpen = nav.classList.toggle("flex");
-    nav.classList.toggle("hidden", !isOpen);
-    hamburgerMenu.setAttribute("aria-expanded", String(isOpen));
-    hamburgerMenu.setAttribute("aria-label", isOpen ? "メニューを閉じる" : "メニューを開く");
-  });
-</script>
