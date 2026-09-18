@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches: [main]
-    paths-ignore:
+    paths-ignore: &ci-ignore
       - "README.md"
       - "AGENTS.md"
       - "CLAUDE.md"
@@ -15,35 +15,29 @@ on:
       - "lefthook.yml"
   pull_request:
     branches: [main]
-    paths-ignore:
-      - "README.md"
-      - "AGENTS.md"
-      - "CLAUDE.md"
-      - ".gitignore"
-      - ".claude/**"
-      - ".worktreeinclude"
-      - "docs/**"
-      - "scripts/r2/**"
-      - "lefthook.yml"
+    paths-ignore: *ci-ignore
 
 permissions:
   contents: read
 
 jobs:
+  lint:
+    name: Lint
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+      - name: Lint
+        run: bun run lint
+
   lhci:
     name: Lighthouse CI
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: "lts/*"
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+      - uses: ./.github/actions/setup
       - name: Build
         run: bun run build
       - name: Run Lighthouse CI
@@ -55,14 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
-        with:
-          node-version: "lts/*"
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+      - uses: ./.github/actions/setup
       - name: Install Playwright browsers
         run: bunx playwright install chromium --with-deps
       - name: Check a11y

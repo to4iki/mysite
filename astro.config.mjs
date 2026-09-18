@@ -49,6 +49,7 @@ const isDev = process.env.NODE_ENV !== "production";
 export default defineConfig({
   output: "static",
   site: "https://to4iki.com",
+  session: false,
   integrations: [sitemap()],
   adapter: isDev
     ? undefined

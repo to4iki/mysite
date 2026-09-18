@@ -6,23 +6,23 @@
 }
 
 .remark-link-card-plus__card {
-  @apply h-32 flex bg-white overflow-hidden rounded-xl border border-slate-300 hover:bg-slate-100 hover:border-slate-500 transition-colors no-underline!;
+  @apply flex h-32 overflow-hidden rounded-xl border border-divider bg-background no-underline! transition-colors hover:border-foreground/50 hover:bg-inline-code;
 }
 
 .remark-link-card-plus__main {
-  @apply flex flex-col flex-1 p-4;
+  @apply flex flex-1 flex-col p-4;
 }
 
 .remark-link-card-plus__title {
-  @apply text-lg font-semibold leading-6 line-clamp-2 text-gray-900 hover:text-gray-900!;
+  @apply line-clamp-2 text-lg font-semibold leading-6 text-foreground hover:text-foreground!;
 }
 
 .remark-link-card-plus__description {
-  @apply mt-1 text-sm text-gray-500 line-clamp-1;
+  @apply mt-1 line-clamp-1 text-sm text-foreground/70;
 }
 
 .remark-link-card-plus__meta {
-  @apply flex items-center mt-auto;
+  @apply mt-auto flex items-center;
 }
 
 .remark-link-card-plus__favicon {
@@ -30,7 +30,7 @@
 }
 
 .remark-link-card-plus__url {
-  @apply text-xs text-gray-600;
+  @apply text-xs text-foreground/70;
 }
 
 .remark-link-card-plus__thumbnail {
@@ -38,5 +38,5 @@
 }
 
 .remark-link-card-plus__image {
-  @apply h-full w-full my-0! object-cover;
+  @apply my-0! h-full w-full object-cover;
 }
