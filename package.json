@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
-    "@biomejs/biome": "^2.5.12",
+    "@biomejs/biome": "^2.5.14",
     "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.62.1",
-    "knip": "^6.34.0"
+    "knip": "^6.37.0"
   }
 }
