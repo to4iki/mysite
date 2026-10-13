@@ -6,9 +6,7 @@ on:
     paths-ignore: &ci-ignore
       - "README.md"
       - "AGENTS.md"
-      - "CLAUDE.md"
       - ".gitignore"
-      - ".claude/**"
       - ".worktreeinclude"
       - "docs/**"
       - "scripts/r2/**"

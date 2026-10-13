@@ -39,10 +39,6 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 - `bun run knip` - 未使用コード・依存パッケージの検出
 - `bun run a11y-check` - アクセシビリティチェック (要事前ビルド)
 
-## Modular Rules
-
-ファイル種別の詳細ルールは、対象ファイルの編集・レビュー時だけ各AIの rules から適用する。ここからは読み込まない。
-
 ## Design System
 
 - `DESIGN.md` - デザイン制約やツールについて

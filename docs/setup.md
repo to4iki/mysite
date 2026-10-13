@@ -22,5 +22,4 @@ CLIの git-wt では worktree を作成した際に `.gitignore` に指定して
 ```bash
 git config --add wt.copy ".env"
 git config --add wt.copy ".env.*"
-git config --add wt.copy "**/.claude/settings.local.json"
 ```
