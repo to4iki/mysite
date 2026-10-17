@@ -4,6 +4,9 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import { getVisibleBlogPosts, sortBlogPostsByPubDateDesc } from "../lib/blog";
 
 export const GET = async (context: APIContext) => {
+  if (!context.site) {
+    throw new Error("site is not configured");
+  }
   const posts = sortBlogPostsByPubDateDesc(await getVisibleBlogPosts());
   return rss({
     title: SITE_TITLE,

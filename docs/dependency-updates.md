@@ -9,7 +9,7 @@
 ## 更新スケジュール
 
 - 毎週月曜（JST）に更新チェック
-- npm パッケージと GitHub Actions の両方が対象
+- pnpm の lockfile は Dependabot の npm ecosystem で更新する。GitHub Actions も対象
 
 ## グルーピング
 

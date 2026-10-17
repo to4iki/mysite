@@ -1,7 +1,7 @@
 version: 2
 updates:
-  # Bun dependencies
-  - package-ecosystem: "bun"
+  # pnpm dependencies (Dependabot reads the npm ecosystem)
+  - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"

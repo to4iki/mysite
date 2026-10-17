@@ -16,7 +16,7 @@ export const GET: APIRoute = async ({ props }) => {
     title: props.title,
     siteName: SITE_TITLE,
   });
-  return new Response(png, {
+  return new Response(new Uint8Array(png), {
     headers: {
       "Content-Type": "image/png",
       "Cache-Control": "public, max-age=31536000, immutable",

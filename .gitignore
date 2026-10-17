@@ -28,3 +28,6 @@ media/
 # Playwright
 playwright-report/
 test-results/
+
+# Vite+ hook dispatcher, recreated by `vp config`
+.vite-hooks/_

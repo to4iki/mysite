@@ -19,13 +19,11 @@ const ogpImagePath = `/blog/${slug}/ogp.png`;
       <div class="mb-1 py-1 leading-none">
         <div class="mb-2 text-base font-bold">
           <FormattedDate date={pubDate} />
-          {
-            updatedDate && (
-              <span class="text-base font-normal italic ml-2">
-                (updated: <FormattedDate date={updatedDate} />)
-              </span>
-            )
-          }
+          {updatedDate && (
+            <span class="text-base font-normal italic ml-2">
+              (updated: <FormattedDate date={updatedDate} />)
+            </span>
+          )}
         </div>
         <h1 class="m-0 mb-2 text-3xl font-bold max-md:text-2xl">{title}</h1>
         <TagList tags={tags} />

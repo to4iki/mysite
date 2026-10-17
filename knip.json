@@ -2,5 +2,9 @@
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "entry": ["src/**/*.astro", "scripts/**/*.ts"],
   "project": ["src/**/*.ts", "scripts/**/*.ts", "e2e/**/*.ts"],
-  "ignoreDependencies": ["tailwindcss", "@tailwindcss/typography"]
+  "ignoreDependencies": [
+    "tailwindcss",
+    "@tailwindcss/typography",
+    "@astrojs/compiler-rs"
+  ]
 }

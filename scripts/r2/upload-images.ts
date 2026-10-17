@@ -4,18 +4,14 @@ import type { UploadOptions } from "./types.ts";
 
 const parseArgs = (args: string[]): UploadOptions => {
   const dryRun = args.includes("--dry-run");
-  let maxWidth: number | undefined;
-
   const maxWidthIdx = args.indexOf("--max-width");
-  if (maxWidthIdx !== -1) {
-    const value = Number.parseInt(args[maxWidthIdx + 1] ?? "", 10);
-    if (!Number.isInteger(value) || value <= 0) {
-      throw new Error("--max-width requires a positive integer");
-    }
-    maxWidth = value;
-  }
+  if (maxWidthIdx === -1) return { dryRun };
 
-  return { dryRun, maxWidth };
+  const value = Number.parseInt(args[maxWidthIdx + 1] ?? "", 10);
+  if (!Number.isInteger(value) || value <= 0) {
+    throw new Error("--max-width requires a positive integer");
+  }
+  return { dryRun, maxWidth: value };
 };
 
 const main = async () => {
@@ -25,7 +21,9 @@ const main = async () => {
     `[r2-upload] mode: ${options.dryRun ? "dry-run" : "upload"}${options.maxWidth ? `, maxWidth: ${options.maxWidth}px` : ""}`,
   );
 
-  const converted = await convertImages({ maxWidth: options.maxWidth });
+  const converted = await convertImages(
+    options.maxWidth === undefined ? {} : { maxWidth: options.maxWidth },
+  );
   if (converted.length === 0) return;
 
   const results = await uploadImages(converted, options);

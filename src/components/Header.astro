@@ -13,11 +13,9 @@ const navItems = [
 <header class="mx-auto mb-6 max-w-3xl px-6 py-3 max-md:px-4">
   <nav aria-label="メイン">
     <div class="hidden items-center justify-end gap-6 md:flex">
-      {
-        navItems.map((item) => (
-          <HeaderLink href={item.href}>{item.label}</HeaderLink>
-        ))
-      }
+      {navItems.map((item) => (
+        <HeaderLink href={item.href}>{item.label}</HeaderLink>
+      ))}
       <a
         href="/rss.xml"
         aria-label="RSS Feed"
@@ -32,16 +30,17 @@ const navItems = [
         class="flex cursor-pointer list-none justify-end [&::-webkit-details-marker]:hidden"
         aria-label="メニュー"
       >
-        <span class="flex h-8 w-8 flex-col justify-center gap-1.5" aria-hidden="true">
+        <span
+          class="flex h-8 w-8 flex-col justify-center gap-1.5"
+          aria-hidden="true"
+        >
           <HamburgerIcon />
         </span>
       </summary>
       <div class="mt-4 flex flex-col gap-4 border-b border-divider pb-4">
-        {
-          navItems.map((item) => (
-            <HeaderLink href={item.href}>{item.label}</HeaderLink>
-          ))
-        }
+        {navItems.map((item) => (
+          <HeaderLink href={item.href}>{item.label}</HeaderLink>
+        ))}
         <a
           href="/rss.xml"
           aria-label="RSS Feed"

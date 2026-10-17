@@ -13,6 +13,4 @@ const formatDate = (d: Date): string => {
 };
 ---
 
-<time datetime={date.toISOString()}>
-  {formatDate(date)}
-</time>
+<time datetime={date.toISOString()}>{formatDate(date)}</time>

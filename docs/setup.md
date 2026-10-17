@@ -2,12 +2,14 @@
 
 ## 依存ツールのインストール
 
+Node.js と pnpm の版は `package.json` の `devEngines.runtime` と `packageManager` に固定されている。
+
 ```bash
-mise install
-mise trust
-bun install --frozen-lockfile
-lefthook install
+pnpm install --frozen-lockfile
+pnpm exec vp hooks enable
 ```
+
+`ignoreScripts: true` のため、install では lifecycle script が走らない。pre-commit は `vp hooks enable` で有効にする。
 
 ## Git worktree の設定
 

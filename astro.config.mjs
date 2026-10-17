@@ -51,11 +51,13 @@ export default defineConfig({
   site: "https://to4iki.com",
   session: false,
   integrations: [sitemap()],
-  adapter: isDev
-    ? undefined
-    : cloudflare({
-        imageService: "compile",
-        prerenderEnvironment: "node",
+  ...(isDev
+    ? {}
+    : {
+        adapter: cloudflare({
+          imageService: "compile",
+          prerenderEnvironment: "node",
+        }),
       }),
   vite: {
     plugins: [tailwindcss(), serveMedia()],

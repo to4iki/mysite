@@ -1,16 +1,16 @@
 {
   "name": "mysite",
-  "type": "module",
   "version": "0.0.1",
+  "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "lint": "biome check",
-    "format": "biome check --write",
+    "lint": "vp check",
+    "format": "vp check --fix",
     "lhci": "lhci autorun",
-    "r2:upload": "bun run scripts/r2/upload-images.ts",
-    "r2:replace-paths": "bun run scripts/r2/replace-paths.ts",
+    "r2:upload": "node scripts/r2/upload-images.ts",
+    "r2:replace-paths": "node scripts/r2/replace-paths.ts",
     "a11y-check": "playwright test",
     "knip": "knip"
   },
@@ -30,10 +30,20 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
+    "@astrojs/compiler-rs": "^0.5.1",
     "@axe-core/playwright": "^4.13.0",
-    "@biomejs/biome": "^2.5.14",
     "@lhci/cli": "^0.15.1",
-    "@playwright/test": "^1.62.1",
-    "knip": "^6.38.0"
-  }
+    "@playwright/test": "^1.64.1",
+    "knip": "^6.38.0",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.22.0",
+      "onFail": "download"
+    }
+  },
+  "packageManager": "pnpm@10.33.0"
 }

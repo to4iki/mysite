@@ -1,15 +1,14 @@
 name: Setup
-description: Install Node, Bun, and frozen lockfile dependencies
+description: Install Node, pnpm, and frozen lockfile dependencies
 
 runs:
   using: composite
   steps:
+    - uses: pnpm/action-setup@v4
     - uses: actions/setup-node@v7
       with:
-        node-version: "lts/*"
-    - uses: oven-sh/setup-bun@v2
-      with:
-        bun-version: latest
+        node-version: "24.22.0"
+        cache: pnpm
     - name: Install dependencies
       shell: bash
-      run: bun install --frozen-lockfile
+      run: pnpm install --frozen-lockfile

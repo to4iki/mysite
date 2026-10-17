@@ -5,8 +5,8 @@
 - 型定義は `type` で書く（`interface` は使わない）
 - `any` 禁止。`unknown` を使い、型を絞り込む
 - 関数は arrow function で統一（`export const fn = () => {}` の形式）
-- 型の import は `import type` を使う（`.ts` ファイルのみ。Astro ファイルでは biome が `useImportType` を off にしている）
-- フォーマットは biome に任せる（インデント: スペース2、クォート: ダブル）
+- 型の import は `import type` を使う
+- フォーマットは Oxfmt、lint は Oxlint に任せる（`vp check`。インデント: スペース2、クォート: ダブル、`printWidth: 80`）
 
 ## Astro
 

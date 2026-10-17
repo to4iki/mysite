@@ -10,7 +10,6 @@ on:
       - ".worktreeinclude"
       - "docs/**"
       - "scripts/r2/**"
-      - "lefthook.yml"
   pull_request:
     branches: [main]
     paths-ignore: *ci-ignore
@@ -27,7 +26,17 @@ jobs:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
       - name: Lint
-        run: bun run lint
+        run: pnpm run lint
+
+  knip:
+    name: Knip
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+      - name: Knip
+        run: pnpm run knip
 
   lhci:
     name: Lighthouse CI
@@ -37,9 +46,9 @@ jobs:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
       - name: Build
-        run: bun run build
+        run: pnpm run build
       - name: Run Lighthouse CI
-        run: bun run lhci
+        run: pnpm run lhci
 
   a11y:
     name: Accessibility Check
@@ -49,8 +58,8 @@ jobs:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup
       - name: Install Playwright browsers
-        run: bunx playwright install chromium --with-deps
+        run: pnpm exec playwright install chromium --with-deps
       - name: Check a11y
         run: |
-          bun run build
-          bun run a11y-check
+          pnpm run build
+          pnpm run a11y-check

@@ -20,9 +20,9 @@ jobs:
       - name: Setup
         uses: ./.github/actions/setup
       - name: Lint & Check
-        run: bun run lint
+        run: pnpm run lint
       - name: Build Astro
-        run: bun run build
+        run: pnpm run build
       - name: Deploy
         uses: cloudflare/wrangler-action@v4
         with:

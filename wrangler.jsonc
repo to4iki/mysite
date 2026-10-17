@@ -6,16 +6,16 @@
   "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "binding": "ASSETS",
-    "directory": "./dist/client"
+    "directory": "./dist/client",
   },
   "workers_dev": false,
   "routes": [
     {
       "pattern": "to4iki.com",
-      "custom_domain": true
-    }
+      "custom_domain": true,
+    },
   ],
   "observability": {
-    "enabled": true
-  }
+    "enabled": true,
+  },
 }

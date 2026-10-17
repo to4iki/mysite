@@ -4,7 +4,7 @@ import type { Font } from "satori";
 
 type FontConfig = {
   filename: string;
-  weight: Font["weight"];
+  weight: NonNullable<Font["weight"]>;
 };
 
 const FONT_CONFIGS: FontConfig[] = [
@@ -19,11 +19,18 @@ let fontsPromise: Promise<Font[]> | undefined;
 
 export const loadFonts = (): Promise<Font[]> => {
   fontsPromise ??= Promise.all(
-    FONT_CONFIGS.map(async ({ filename, weight }) => ({
-      name: "Noto Sans JP",
-      data: await readFile(join(FONT_DIR, filename)),
-      weight,
-    })),
+    FONT_CONFIGS.map(async ({ filename, weight }) => {
+      const file = await readFile(join(FONT_DIR, filename));
+      const font: Font = {
+        name: "Noto Sans JP",
+        data: file.buffer.slice(
+          file.byteOffset,
+          file.byteOffset + file.byteLength,
+        ),
+        weight,
+      };
+      return font;
+    }),
   );
   return fontsPromise;
 };
