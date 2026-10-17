@@ -9,7 +9,7 @@
 ## 更新スケジュール
 
 - 毎週月曜（JST）に更新チェック
-- npm パッケージと GitHub Actions の両方が対象
+- Bun の依存パッケージ（`package-ecosystem: bun`）と GitHub Actions が対象
 
 ## グルーピング
 

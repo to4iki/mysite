@@ -5,8 +5,9 @@ JavaScriptランタイムとツールキットには Bun、デプロイ先には
 
 ## 開発環境
 
-- プロジェクトの開発環境の構築には、mise を使う
-- Git worktree を利用する際は、作成したディレクトリで、`mise trust` を実行すること
+- Bun は mise で入れる。依存は `bun install --frozen-lockfile`
+- Git hooks は lefthook（devDependency）。`ignoreScripts` のため `bun install` では入らないので、`bunx lefthook install` を一度実行する
+- Git worktree を作ったディレクトリでは `mise trust` を実行する
 
 ## 技術スタック
 

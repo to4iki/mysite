@@ -1,23 +1,19 @@
 # プロジェクトセットアップ
 
-## 依存ツールのインストール
-
 ```bash
 mise install
 mise trust
 bun install --frozen-lockfile
-lefthook install
+bunx lefthook install
 ```
 
-## Git worktree の設定
+Bun は mise で入れる。lefthook は devDependency である。`bunfig.toml` の `ignoreScripts` により `bun install` では Git hooks が入らないので、`bunx lefthook install` を一度実行する。
 
-worktreeの管理には、[git-wt](https://github.com/k1LoW/git-wt) を利用している。
+## Git worktree
 
-`.worktreeinclude` は Claude Code Desktop 用の設定。
-CLIの git-wt では worktree を作成した際に `.gitignore` に指定しているファイルやフォルダは作業ディレクトリにコピーされないので、
-`.git/config` にコピー設定を追加すること。
+worktree は [git-wt](https://github.com/k1LoW/git-wt) で作り、作ったディレクトリで `mise trust` を実行する。
 
-### worktree への `.env` コピーを設定する
+`.worktreeinclude` は Claude Code Desktop 用。CLI の git-wt は `.gitignore` 対象をコピーしないので、`.env` をコピーする設定を足す。
 
 ```bash
 git config --add wt.copy ".env"
