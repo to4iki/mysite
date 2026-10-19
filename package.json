@@ -30,11 +30,11 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@axe-core/playwright": "^4.13.0",
-    "@biomejs/biome": "^2.5.14",
+    "@axe-core/playwright": "^4.14.0",
+    "@biomejs/biome": "^2.5.15",
     "@lhci/cli": "^0.15.1",
-    "@playwright/test": "^1.62.1",
-    "knip": "^6.38.0",
+    "@playwright/test": "^1.64.1",
+    "knip": "^6.41.0",
     "lefthook": "^2.1.10"
   }
 }
