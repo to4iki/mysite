@@ -15,9 +15,10 @@ const { title, items } = Astro.props;
     {
       items.map((item) => (
         <li class="py-4 border-b border-divider">
-          <a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`${item.title} (外部サイトへ移動)`} class="flex justify-between items-baseline">
+          <a href={item.url} target="_blank" rel="noopener noreferrer" class="flex justify-between items-baseline">
             <span class="font-bold">{item.title}</span>
             {item.description && <span class="text-sm">{item.description}</span>}
+            <span class="sr-only">(外部サイトへ移動)</span>
           </a>
         </li>
       ))
