@@ -34,7 +34,7 @@
     "@biomejs/biome": "^2.6.7",
     "@lhci/cli": "^0.16.1",
     "@playwright/test": "^1.65.1",
-    "knip": "^6.45.1",
+    "knip": "^6.46.1",
     "lefthook": "^2.1.10"
   }
 }
